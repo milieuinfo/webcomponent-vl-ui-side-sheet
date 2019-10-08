@@ -1,0 +1,20 @@
+@charset "utf-8";
+@import "vl-ui-core/src/scss/core";
+@import "vl-ui-util/src/scss/util";
+
+#vl-side-sheets:not(.active) {
+  display: none;
+}
+
+#vl-side-sheets {
+  position: fixed;
+  right: 0px;
+  top: 79vh;
+  width: 33%;
+  height: calc(100% - 35px);
+  z-index: 1;
+  background: white;
+  border-left: 1px solid #cbd2da;
+  padding: 2rem;
+  overflow: scroll;
+}
