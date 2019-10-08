@@ -1,6 +1,6 @@
 import{VlElement}from"/node_modules/vl-ui-core/vl-core.js";(()=>{!function(e,t,s){if(!document.head.querySelector("#"+e)){let n=document.createElement("script");n.setAttribute("id",e),n.setAttribute("src",t),n.onload=s,document.head.appendChild(n)}}("util.js","/node_modules/@govflanders/vl-ui-util/dist/js/util.js",()=>{})})();export class VlSideSheets extends VlElement(HTMLElement){constructor(){super(`
         <style> 
-        @import "/node_modules/vl-side-sheets/style.css";
+        @import "/node_modules/vl-ui-side-sheets/style.css";
         </style>
         <div id="vl-side-sheets">
           <slot></slot>
