@@ -1,20 +1,96 @@
+// ==========================================================================
+// Vlaanderen UI -- Side-sheets
+// ==========================================================================
 @charset "utf-8";
-@import "vl-ui-core/src/scss/core";
-@import "vl-ui-util/src/scss/util";
+@import "/node_modules/vl-ui-core/core-style.css";
+$break-small: 767px;
 
-#vl-side-sheets:not(.active) {
+#vl-side-sheets{
   display: none;
-}
-
-#vl-side-sheets {
   position: fixed;
-  right: 0px;
-  top: 79vh;
-  width: 33%;
-  height: calc(100% - 35px);
-  z-index: 1;
+  right: 0;
+  top: 0;
+  width: 30%;
+
+  @media screen and (max-width: $break-small) {
+    width: 80%;
+    border: 0;
+    box-shadow: 0 0 2.1rem 0 rgba(0, 0, 0, 0.3);
+  }
+  height: 100vh;
+  z-index: 2;
   background: white;
   border-left: 1px solid #cbd2da;
   padding: 2rem;
   overflow: scroll;
 }
+
+#vl-side-sheets[open]{
+  display: block;
+}
+
+#vl-side-sheets-backdrop {
+  display: none;
+}
+
+#vl-side-sheets-backdrop[open] {
+  @media screen and (max-width: $break-small) {
+   display: block;
+  }
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(2px);
+}
+
+.vl-side-sheets__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0.2rem;
+  right: 0.2rem;
+  padding: 1rem;
+  border: 0;
+  background: none;
+  line-height: 1;
+  overflow: hidden; }
+.vl-side-sheets__close:hover .vl-side-sheets__close__icon, .vl-side-sheets__close:focus .vl-side-sheets__close__icon {
+  color: #05c; }
+@media screen and (max-width: 767px) {
+  .vl-side-sheets__close {
+    top: 0;
+    right: 0; } }
+.vl-side-sheets__close__icon {
+  display: flex;
+  font-size: 1.4rem;
+  line-height: 1; }
+.vl-side-sheets__close__icon::before, .vl-side-sheets__close__icon::after {
+  font-family: "vlaanderen-icon" !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  text-decoration: none;
+  text-transform: none; }
+.vl-side-sheets__close__icon::before {
+  content: "\f16f"; }
+.vl-side-sheets__close__icon.vl-icon {
+  margin-right: 0; }
+
+.vl-u-visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  left: 0;
+  top: 0; }
