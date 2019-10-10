@@ -8,19 +8,19 @@ $break-small: 767px;
 #vl-side-sheets{
   display: none;
   position: fixed;
-  right: 0;
   top: 0;
-  width: 30%;
+  width: 320px;
+  right: 0;
+  border-left: 1px solid #cbd2da;
 
   @media screen and (max-width: $break-small) {
-    width: 80%;
+    width: calc(100vw - 56px);
     border: 0;
     box-shadow: 0 0 2.1rem 0 rgba(0, 0, 0, 0.3);
   }
   height: 100vh;
-  z-index: 2;
+  z-index: 1001;
   background: white;
-  border-left: 1px solid #cbd2da;
   padding: 2rem;
   overflow: scroll;
 }
@@ -33,6 +33,11 @@ $break-small: 767px;
   display: none;
 }
 
+#vl-side-sheets[data-vl-side-sheets-left] {
+  left: 0;
+  border-right: 1px solid #cbd2da;
+}
+
 #vl-side-sheets-backdrop[open] {
   @media screen and (max-width: $break-small) {
    display: block;
@@ -42,7 +47,7 @@ $break-small: 767px;
   right: 0;
   top: 0;
   bottom: 0;
-  z-index: 1;
+  z-index: 1000;
   background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(2px);
 }
