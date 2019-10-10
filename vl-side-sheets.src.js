@@ -31,6 +31,10 @@ import {VlElement} from '/node_modules/vl-ui-core/vl-core.js';
  *
  */
 export class VlSideSheets extends VlElement(HTMLElement) {
+  static get _observedAttributes() {
+    return ['data-vl-left'];
+  }
+
   constructor() {
     super(`
         <style> 
@@ -47,8 +51,8 @@ export class VlSideSheets extends VlElement(HTMLElement) {
         `);
   }
 
-  connectedCallback(){
-    this._closeButton.addEventListener("click",(e)=>{
+  connectedCallback() {
+    this._closeButton.addEventListener("click", (e) => {
       this.close();
     });
   }
@@ -81,6 +85,14 @@ export class VlSideSheets extends VlElement(HTMLElement) {
 
   get isOpen() {
     return this._element.hasAttribute('open');
+  }
+
+  _leftChangedCallback(oldValue, newValue) {
+    if (newValue !== undefined) {
+      this._sheetsElement.setAttribute('data-vl-side-sheets-left','')
+    } else{
+      this._sheetsElement.remove('data-vl-side-sheets-left');
+    }
   }
 }
 
