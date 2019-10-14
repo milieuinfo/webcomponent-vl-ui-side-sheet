@@ -6,26 +6,69 @@
   <script src="../../@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
   <script src="../../web-component-tester/browser.js"></script>
 
-  <script type="module" src="../vl-side-sheets.src.js"></script>
+  <script type="module" src="../vl-side-sheets.js"></script>
+  <script src="../node_modules/sinon/pkg/sinon.js"></script>
 </head>
 
 <body>
-  <test-fixture id="vl-side-sheets-fixture">
-    <template>
-      
-    </template>
-  </test-fixture>
 
-  <script>
-    suite('<vl-side-sheets>', () => {
-      const should = chai.should();
+<test-fixture id="vl-side-sheets-fixture">
+  <template>
+    <vl-side-sheets></vl-side-sheets>
+  </template>
+</test-fixture>
 
-      test('vl-side-sheets test', () => {
-        const side-sheets = fixture('vl-side-sheets-fixture');
-        assert.isTrue(true);
+<script>
+  suite('<vl-side-sheets>', () => {
+    let sideSheets;
+
+    setup(() => {
+      sideSheets = fixture('vl-side-sheets-fixture');
+    });
+
+    test('open de side sheets', () => {
+      sideSheets.open();
+      assert.isTrue(sideSheets._sheetsElement.hasAttribute("open"));
+      assert.isTrue(sideSheets._backdropElement.hasAttribute("open"));
+      assert.isTrue(sideSheets.isOpen);
+    });
+
+    test('close de side sheets', () => {
+      sideSheets.close();
+      assert.isFalse(sideSheets._sheetsElement.hasAttribute("open"));
+      assert.isFalse(sideSheets._backdropElement.hasAttribute("open"));
+    });
+
+    test('toggle de side sheets', () => {
+      sideSheets.open();
+      assert.isTrue(sideSheets._sheetsElement.hasAttribute("open"));
+      assert.isTrue(sideSheets._backdropElement.hasAttribute("open"));
+      sideSheets.toggle();
+      assert.isFalse(sideSheets._sheetsElement.hasAttribute("open"));
+      assert.isFalse(sideSheets._backdropElement.hasAttribute("open"));
+      sideSheets.toggle();
+      assert.isTrue(sideSheets._sheetsElement.hasAttribute("open"));
+      assert.isTrue(sideSheets._backdropElement.hasAttribute("open"));
+    });
+
+    test('close button werkt', () => {
+      sideSheets.open();
+      assert.isTrue(sideSheets._sheetsElement.hasAttribute("open"));
+      assert.isTrue(sideSheets._backdropElement.hasAttribute("open"));
+      sideSheets.shadowRoot.querySelector(".vl-side-sheets__close").click();
+      assert.isFalse(sideSheets._sheetsElement.hasAttribute("open"));
+      assert.isFalse(sideSheets._backdropElement.hasAttribute("open"));
+    });
+
+    test('positoneren', () => {
+      assert.isFalse(sideSheets._sheetsElement.hasAttribute("data-vl-side-sheets-left"));
+      sideSheets.setAttribute("data-vl-left", "");
+      flush(() => {
+        assert.isTrue(sideSheets._sheetsElement.hasAttribute("data-vl-side-sheets-left"));
       });
     });
-  </script>
+  })
+</script>
 </body>
 
 </html>

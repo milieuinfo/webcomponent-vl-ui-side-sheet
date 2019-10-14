@@ -19,11 +19,11 @@ import {VlElement} from '/node_modules/vl-ui-core/vl-core.js';
 /**
  * VlSide-sheets
  * @class
- * @classdesc
+ * @classdesc Side-sheets zijn containers die aan de linker- of rechterrand van het scherm zijn verankerd.
  *
  * @extends VlElement
  *
- * @property
+ * @property {boolean} data-vl-left - Attribute wordt gebruikt om aan te duiden dat de side-sheets de linkererand van het scherm moet plaatsen.
  *
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-side-sheets/releases/latest|Release notes}
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-side-sheets/issues|Issues}
@@ -45,8 +45,8 @@ export class VlSideSheets extends VlElement(HTMLElement) {
          <button type="button" class="vl-side-sheets__close">
             <i class="vl-side-sheets__close__icon vl-vi vl-vi-cross" aria-hidden="true"></i>
             <span class="vl-u-visually-hidden">Venster sluiten</span>
-          </button>
-          <slot></slot>
+         </button>
+         <slot></slot>
         </div>
         `);
   }
@@ -69,15 +69,24 @@ export class VlSideSheets extends VlElement(HTMLElement) {
     return this._shadow.querySelector('#vl-side-sheets-backdrop');
   }
 
+  /*
+   *Toggle
+   */
   toggle() {
     this.isOpen ? this.close() : this.open();
   }
 
+  /*
+   *Handmatig open de side-sheets
+   */
   open() {
     this._sheetsElement.setAttribute('open', '');
     this._backdropElement.setAttribute('open', '');
   }
 
+  /*
+   *Handmatig sluiten de side-sheets
+   */
   close() {
     this._sheetsElement.removeAttribute('open');
     this._backdropElement.removeAttribute('open');
@@ -89,8 +98,8 @@ export class VlSideSheets extends VlElement(HTMLElement) {
 
   _leftChangedCallback(oldValue, newValue) {
     if (newValue !== undefined) {
-      this._sheetsElement.setAttribute('data-vl-side-sheets-left','')
-    } else{
+      this._sheetsElement.setAttribute('data-vl-side-sheets-left', '')
+    } else {
       this._sheetsElement.remove('data-vl-side-sheets-left');
     }
   }
