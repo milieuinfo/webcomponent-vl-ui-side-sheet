@@ -23,7 +23,7 @@ import {VlElement} from '/node_modules/vl-ui-core/vl-core.js';
  *
  * @extends VlElement
  *
- * @property {boolean} data-vl-left - Attribute wordt gebruikt om aan te duiden dat de side-sheets de linkererand van het scherm moet plaatsen.
+ * @property {boolean} left - Attribute wordt gebruikt om aan te duiden dat de side-sheets de linkererand van het scherm moet plaatsen.
  *
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-side-sheets/releases/latest|Release notes}
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-side-sheets/issues|Issues}
@@ -32,7 +32,7 @@ import {VlElement} from '/node_modules/vl-ui-core/vl-core.js';
  */
 export class VlSideSheets extends VlElement(HTMLElement) {
   static get _observedAttributes() {
-    return ['data-vl-left'];
+    return ['left'];
   }
 
   constructor() {

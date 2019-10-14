@@ -8,9 +8,42 @@
   <script type="module" src="../vl-side-sheets.src.js"></script>
 </head>
 <body>
-<button onclick="document.getElementsByTagName('vl-side-sheets')[0].toggle();">Open</button>
-<vl-side-sheets data-vl-left>
-  <h1>Hello world!</h1>
-</vl-side-sheets>
+  <h1>vl-ui-side-sheets demo</h1>
+
+  <div>
+    <h2>Toggle</h2>
+    <pre>
+                <code class="line-numbers language-markup">
+                    &lt;button onclick="document.getElementById('vl-side-sheets-1').toggle();"&gt;Open&lt;/button&gt;
+                    &lt;vl-side-sheets&gt;
+                      &lt;h1&gt;Hello world!&lt;/h1&gt;
+                    &lt;/vl-side-sheets&gt;
+                </code>
+            </pre>
+  </div>
+  <div class="demo">
+    <button onclick="document.getElementById('vl-side-sheets-1').toggle();">Open</button>
+    <vl-side-sheets id="vl-side-sheets-1">
+      <h1>Hello world!</h1>
+    </vl-side-sheets>
+  </div>
+
+  <div>
+    <h2>Positioneert links</h2>
+    <pre>
+      <code class="line-numbers language-markup">
+        &lt;button onclick="document.getElementById('vl-side-sheets-2').toggle();"&gt;Open&lt;/button&gt;
+        &lt;vl-side-sheets id="vl-side-sheets-2" left&gt;
+          &lt;h1&gt;Hello world!&lt;/h1&gt;
+        &lt;/vl-side-sheets&gt;
+      </code>
+    </pre>
+    <div class="demo">
+      <button onclick="document.getElementById('vl-side-sheets-2').toggle();">Open</button>
+      <vl-side-sheets id="vl-side-sheets-2" left>
+        <h1>Hello world!</h1>
+      </vl-side-sheets>
+    </div>
+  </div>
 </body>
 </html>
