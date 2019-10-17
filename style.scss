@@ -1,11 +1,11 @@
 // ==========================================================================
-// Vlaanderen UI -- Side-sheets
+// Vlaanderen UI -- Side-sheet
 // ==========================================================================
 @charset "utf-8";
 @import "/node_modules/vl-ui-core/core-style.css";
 $break-small: 767px;
 
-#vl-side-sheets{
+#vl-side-sheet{
   display: none;
   position: fixed;
   top: 0;
@@ -25,20 +25,20 @@ $break-small: 767px;
   overflow: scroll;
 }
 
-#vl-side-sheets[open]{
+#vl-side-sheet[open]{
   display: block;
 }
 
-#vl-side-sheets-backdrop {
+#vl-side-sheet-backdrop {
   display: none;
 }
 
-#vl-side-sheets[data-vl-side-sheets-left] {
+#vl-side-sheet[data-vl-side-sheet-left] {
   left: 0;
   border-right: 1px solid #cbd2da;
 }
 
-#vl-side-sheets-backdrop[open] {
+#vl-side-sheet-backdrop[open] {
   @media screen and (max-width: $break-small) {
    display: block;
   }
@@ -52,7 +52,7 @@ $break-small: 767px;
   backdrop-filter: blur(2px);
 }
 
-.vl-side-sheets__close {
+.vl-side-sheet__close {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,17 +64,17 @@ $break-small: 767px;
   background: none;
   line-height: 1;
   overflow: hidden; }
-.vl-side-sheets__close:hover .vl-side-sheets__close__icon, .vl-side-sheets__close:focus .vl-side-sheets__close__icon {
+.vl-side-sheet__close:hover .vl-side-sheet__close__icon, .vl-side-sheet__close:focus .vl-side-sheet__close__icon {
   color: #05c; }
 @media screen and (max-width: 767px) {
-  .vl-side-sheets__close {
+  .vl-side-sheet__close {
     top: 0;
     right: 0; } }
-.vl-side-sheets__close__icon {
+.vl-side-sheet__close__icon {
   display: flex;
   font-size: 1.4rem;
   line-height: 1; }
-.vl-side-sheets__close__icon::before, .vl-side-sheets__close__icon::after {
+.vl-side-sheet__close__icon::before, .vl-side-sheet__close__icon::after {
   font-family: "vlaanderen-icon" !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -83,9 +83,9 @@ $break-small: 767px;
   font-weight: normal;
   text-decoration: none;
   text-transform: none; }
-.vl-side-sheets__close__icon::before {
+.vl-side-sheet__close__icon::before {
   content: "\f16f"; }
-.vl-side-sheets__close__icon.vl-icon {
+.vl-side-sheet__close__icon.vl-icon {
   margin-right: 0; }
 
 .vl-u-visually-hidden {

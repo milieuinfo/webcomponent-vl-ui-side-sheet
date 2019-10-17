@@ -1,9 +1,11 @@
-# webcomponent-vl-ui-side-sheets
-Side-sheets zijn containers die aan de linker- of rechterrand van het scherm zijn verankerd.
+# webcomponent-vl-ui-side-sheet
+Side-sheet zijn containers die aan de linker- of rechterrand van het scherm zijn verankerd.
+
+Dit element volgt de regel van [Material Design](https://material.io/components/sheet-side/#theming).
 
 ## Installation
 ```
-npm install --save vl-ui-side-sheets
+npm install --save vl-ui-side-sheet
 ```
 
 ## Demo
@@ -13,18 +15,18 @@ npm run demo
 
 ## <a name="gebruik"></a>Gebruik
 ```
-      <button is="vl-button" onclick="document.querySelector('#side-sheets-1').open()">Open</button>
-      <vl-side-sheets id="side-sheets-1" ... >
+      <button is="vl-button" onclick="document.querySelector('#side-sheet-1').open()">Open</button>
+      <vl-side-sheet id="side-sheet-1" ... >
         <.... > Content</...>
-      </vl-side-sheets>
+      </vl-side-sheet>
 ```
 
 ## Kanttekening
-- De side-sheets element heeft 1 slot voor content.
-- De default positie van de element is rechts.
+- Het side-sheet element heeft 1 slot voor content.
+- De default positie van het element is rechts.
 
 ## Credits
-Zie de lijst van [ontwikkelaars](https://github.com/milieuinfo/webcomponent-vl-ui-side-sheets/graphs/contributors) die meegewerkt hebben aan de webcomponent.
+Zie de lijst van [ontwikkelaars](https://github.com/milieuinfo/webcomponent-vl-ui-side-sheet/graphs/contributors) die meegewerkt hebben aan de webcomponent.
 
 ## Contact
 Mail je suggesties, opmerkingen of tips naar [help@omgevingvlaanderen.be](mailto:help@omgevingvlaanderen.be)
