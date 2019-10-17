@@ -25,6 +25,16 @@ import {VlElement} from '/node_modules/vl-ui-core/vl-core.js';
  *
  * @property {boolean} left - Attribute wordt gebruikt om aan te duiden dat de side-sheet de linkererand van het scherm moet plaatsen.
  *
+ * @example Breedte van de side sheet aanpassen(op grote scherm):
+ *  static get styles() {
+    return [
+      css`
+        :host {
+         --vl-side-sheet-width: 480px;
+         }
+        `
+    ];
+  }
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-side-sheet/releases/latest|Release notes}
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-side-sheet/issues|Issues}
  * @see {@link https://webcomponenten.omgeving.vlaanderen.be/demo/vl-side-sheet.html|Demo}

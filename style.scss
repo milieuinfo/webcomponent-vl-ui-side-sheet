@@ -9,7 +9,7 @@ $break-small: 767px;
   display: none;
   position: fixed;
   top: 0;
-  width: 320px;
+  width: var(--vl-side-sheet-width,320px);
   right: 0;
   border-left: 1px solid #cbd2da;
 
