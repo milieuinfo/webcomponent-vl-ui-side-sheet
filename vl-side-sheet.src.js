@@ -1,5 +1,5 @@
 import {VlElement} from '/node_modules/vl-ui-core/vl-core.js';
-import{SwipeDetect} from '/dist/swipeDetect.js';
+import {SwipeDetect} from '/dist/swipeDetect.js';
 
 (() => {
   loadScript('util.js',
@@ -67,9 +67,11 @@ export class VlSidesheet extends VlElement(HTMLElement) {
       this.close();
     });
 
-    SwipeDetect.detect(this._sheetElement,(direction)=>{
-      let closeDirection = this.hasAttribute('left')?'left':'right';
-      direction&&direction===closeDirection?this.close():null;
+    SwipeDetect.detect(this._sheetElement, (direction) => {
+      const closeDirection = this.hasAttribute('left') ? 'left' : 'right';
+      if (direction && direction === closeDirection) {
+        this.close();
+      }
     });
   }
 
