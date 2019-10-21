@@ -43,7 +43,7 @@ import {SwipeDetect} from '/dist/swipeDetect.js';
  */
 export class VlSidesheet extends VlElement(HTMLElement) {
   static get _observedAttributes() {
-    return ['left'];
+    return ['left','enable-swipe'];
   }
 
   constructor() {
@@ -65,13 +65,6 @@ export class VlSidesheet extends VlElement(HTMLElement) {
   connectedCallback() {
     this._closeButton.addEventListener("click", (e) => {
       this.close();
-    });
-
-    SwipeDetect.detect(this._sheetElement, (direction) => {
-      const closeDirection = this.hasAttribute('left') ? 'left' : 'right';
-      if (direction && direction === closeDirection) {
-        this.close();
-      }
     });
   }
 
@@ -110,15 +103,30 @@ export class VlSidesheet extends VlElement(HTMLElement) {
     this._backdropElement.removeAttribute('open');
   }
 
-  isOpen() {
+  get isOpen() {
     return this._element.hasAttribute('open');
   }
 
   _leftChangedCallback(oldValue, newValue) {
+    console.log("left:",newValue);
     if (newValue !== undefined) {
       this._sheetElement.setAttribute('data-vl-side-sheet-left', '')
     } else {
       this._sheetElement.remove('data-vl-side-sheet-left');
+    }
+  }
+
+  _enable_swipeChangedCallback(oldValue, newValue) {
+    const swipeDetect = new SwipeDetect();
+    if (newValue !== undefined) {
+      swipeDetect.attach(this._sheetElement, (direction) => {
+        const closeDirection = this.hasAttribute('left') ? 'left' : 'right';
+        if (direction && direction === closeDirection) {
+          this.close();
+        }
+      });
+    } else {
+      swipeDetect.detach();
     }
   }
 }
