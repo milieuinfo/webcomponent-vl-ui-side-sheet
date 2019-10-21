@@ -1,4 +1,3 @@
-https://codepen.io/ganmahmud/pen/RaoKZa
 export class SwipeDetect {
   static detect(el, callback){
 
