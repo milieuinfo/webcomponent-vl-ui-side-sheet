@@ -33,6 +33,7 @@
     "vl-ui-util": "^2.0.9"
   },
   "devDependencies": {
+    "http-server": "0.11.1",
     "np": "3.0.4",
     "sass": "1.23.0",
     "uglify-js-es6": "2.8.9",
