@@ -110,7 +110,7 @@ export class VlSidesheet extends VlElement(HTMLElement) {
     this._backdropElement.removeAttribute('open');
   }
 
-  get isOpen() {
+  isOpen() {
     return this._element.hasAttribute('open');
   }
 
