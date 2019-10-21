@@ -1,5 +1,5 @@
 import {VlElement} from '/node_modules/vl-ui-core/vl-core.js';
-import {SwipeDetect} from '/dist/swipeDetect.js';
+import {SwipeDetect} from '../dist/swipeDetect.js';
 
 (() => {
   loadScript('util',
