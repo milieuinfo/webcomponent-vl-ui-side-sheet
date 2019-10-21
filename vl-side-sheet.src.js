@@ -1,4 +1,5 @@
 import {VlElement} from '/node_modules/vl-ui-core/vl-core.js';
+import{SwipeDetect} from '/dist/swipeDetect.js';
 
 (() => {
   loadScript('util.js',
@@ -64,6 +65,11 @@ export class VlSidesheet extends VlElement(HTMLElement) {
   connectedCallback() {
     this._closeButton.addEventListener("click", (e) => {
       this.close();
+    });
+
+    SwipeDetect.detect(this._sheetElement,(direction)=>{
+      let closeDirection = this.hasAttribute('left')?'left':'right';
+      direction&&direction===closeDirection?this.close():null;
     });
   }
 
