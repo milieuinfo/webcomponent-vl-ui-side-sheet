@@ -2,7 +2,7 @@ import {VlElement} from '/node_modules/vl-ui-core/vl-core.js';
 import {SwipeDetect} from '/dist/swipeDetect.js';
 
 (() => {
-  loadScript('util.js',
+  loadScript('util',
       '/node_modules/@govflanders/vl-ui-util/dist/js/util.min.js', () => {
       });
 
@@ -88,14 +88,14 @@ export class VlSidesheet extends VlElement(HTMLElement) {
   }
 
   /*
-   *Toggle
+   * Toggle
    */
   toggle() {
     this.isOpen ? this.close() : this.open();
   }
 
   /*
-   *Handmatig open de side-sheet
+   * Handmatig openen van de side-sheet
    */
   open() {
     this._sheetElement.setAttribute('open', '');
@@ -103,7 +103,7 @@ export class VlSidesheet extends VlElement(HTMLElement) {
   }
 
   /*
-   *Handmatig sluiten de side-sheet
+   * Handmatig sluiten van de side-sheet
    */
   close() {
     this._sheetElement.removeAttribute('open');
