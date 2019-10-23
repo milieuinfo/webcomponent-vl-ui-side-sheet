@@ -2,8 +2,8 @@
 version: 2
 plan:
   project-key: WEBCO
-  key: WEBCOMPONENTVLSIDESHEET
-  name: webcomponent-webcomponent-vl-side-sheet
+  key: VLUISIDESHEET
+  name: webcomponent-vl-ui-side-sheet
 
 triggers:
   - polling: 130
@@ -47,7 +47,7 @@ Release:
 ---
 version: 2
 plan:
-  key: WEBCOMPONENTVLSIDESHEET
+  key: VLUISIDESHEET
 
 plan-permissions:
   - groups:
