@@ -1,4 +1,4 @@
-import {VlElement} from '/node_modules/vl-ui-core/vl-core.js';
+import {VlElement,define} from '/node_modules/vl-ui-core/vl-core.js';
 import {SwipeDetect} from '../dist/swipeDetect.js';
 
 (() => {
@@ -25,6 +25,7 @@ import {SwipeDetect} from '../dist/swipeDetect.js';
  * @extends VlElement
  *
  * @property {boolean} left - Attribute wordt gebruikt om aan te duiden dat de side-sheet de linkererand van het scherm moet plaatsen.
+ * @property {boolean} enable-swipe - Attribute wordt gebruikt om aan te duiden dat swipe functie toegelaten is.
  *
  * @example Breedte van de side sheet aanpassen(op grote scherm):
  *  static get styles() {
@@ -101,6 +102,18 @@ export class VlSidesheet extends VlElement(HTMLElement) {
   close() {
     this._sheetElement.removeAttribute('open');
     this._backdropElement.removeAttribute('open');
+    if(this._onClose){
+      this._onClose();
+    }
+  }
+
+  /*
+   * De callback wordt uitgevoerd direct na de afsluiten van een side sheet.
+   * @param event
+   * @param callback
+   */
+  onClose(callBack) {
+    this._onClose = callBack;
   }
 
   get isOpen() {
@@ -108,7 +121,6 @@ export class VlSidesheet extends VlElement(HTMLElement) {
   }
 
   _leftChangedCallback(oldValue, newValue) {
-    console.log("left:",newValue);
     if (newValue !== undefined) {
       this._sheetElement.setAttribute('data-vl-side-sheet-left', '')
     } else {
@@ -131,4 +143,4 @@ export class VlSidesheet extends VlElement(HTMLElement) {
   }
 }
 
-customElements.define('vl-side-sheet', VlSidesheet);
+define('vl-side-sheet', VlSidesheet);
