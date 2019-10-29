@@ -4,7 +4,7 @@
   display: none;
   position: fixed;
   top: 0;
-  width: var(--vl-side-sheet-width, 320px);
+  width: var(--vl-side-sheet-width, calc(100%/3));
   right: 0;
   border-left: 1px solid #cbd2da;
   height: 100vh;
@@ -29,7 +29,7 @@
   display: none;
 }
 
-#vl-side-sheet[data-vl-side-sheet-left] {
+.vl-side-sheet--left {
   left: 0;
   border-right: 1px solid #cbd2da;
 }
