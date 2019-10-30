@@ -1,5 +1,5 @@
 import { VlElement, define } from '/node_modules/vl-ui-core/vl-core.js';
-import { SwipeDetect } from '../dist/swipeDetect.js';
+import swipeDetect from '/node_modules/swipe-detect/dist/index.js';
 
 /**
  * VlSide-sheet
@@ -54,6 +54,10 @@ export class VlSidesheet extends VlElement(HTMLElement) {
 
   get isOpen() {
     return this._element.hasAttribute('open');
+  }
+
+  get isLeft() {
+    return this.hasAttribute('left');
   }
 
   get _closeButton() {
@@ -118,16 +122,14 @@ export class VlSidesheet extends VlElement(HTMLElement) {
   }
 
   _enable_swipeChangedCallback(oldValue, newValue) {
-    const swipeDetect = new SwipeDetect();
     if (newValue !== undefined) {
-      swipeDetect.attach(this._sheetElement, (direction) => {
-        const closeDirection = this.hasAttribute('left') ? 'left' : 'right';
-        if (direction && direction === closeDirection) {
+      swipeDetect(this._sheetElement, (direction) => {
+        if ((this.isLeft && direction === 'left') || (!this.isLeft && direction === 'right')) {
           this.close();
         }
-      });
+      }, 50);
     } else {
-      swipeDetect.detach();
+      swipeDetect.disable();
     }
   }
 }
