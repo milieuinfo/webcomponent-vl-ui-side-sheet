@@ -31,7 +31,7 @@
   "homepage": "https://github.com/milieuinfo/webcomponent-vl-side-sheet#readme",
   "dependencies": {
     "replace": "^1.1.1",
-    "swipe-detect": "github:coemans/swipe-detect",
+    "swipe-detect": "1.0.1",
     "vl-ui-core": "^2.1.0",
     "vl-ui-util": "^2.0.13"
   },
