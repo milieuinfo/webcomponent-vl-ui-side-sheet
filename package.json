@@ -33,7 +33,7 @@
     "replace": "^1.1.1",
     "swipe-detect": "1.0.1",
     "vl-ui-core": "^2.1.0",
-    "vl-ui-util": "^2.0.12"
+    "vl-ui-util": "^3.0.0"
   },
   "devDependencies": {
     "http-server": "0.11.1",
