@@ -33,7 +33,7 @@
     "vl-ui-core": "^2.1.0"
   },
   "devDependencies": {
-    "vl-ui-util": "^3.4.2",
+    "vl-ui-util": "^3.4.4",
     "vl-ui-button": "1.3.1"
   }
 }
