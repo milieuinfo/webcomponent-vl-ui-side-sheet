@@ -18,8 +18,12 @@ class VlSideSheet extends VlElement {
         return (await this._getCloseButton()).click();
     }
 
-    async getContent() {
+    async getText() {
         return (await this._getSideSheet()).getText();
+    }
+
+    async getContent() {
+        return this._getSideSheet();
     }
 }
 
