@@ -1,7 +1,5 @@
 const VlSideSheet = require('../components/vl-side-sheet');
-const { Page } = require('vl-ui-core');
-const { Config } = require('vl-ui-core');
-const { By } = require('selenium-webdriver');
+const { Page, Config } = require('vl-ui-core').Test;
 
 class VlSideSheetPage extends Page {
     async _getSideSheet(selector) {
