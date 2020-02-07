@@ -1,5 +1,5 @@
 
-const { assert, driver } = require('vl-ui-core').Test;
+const { assert, driver } = require('vl-ui-core').Test.Setup;
 const VlSideSheetPage = require('./pages/vl-side-sheet.page');
 
 describe('vl-side-sheet', async () => {
@@ -24,5 +24,9 @@ describe('vl-side-sheet', async () => {
         await vlSideSheetPage.open();
         await assert.eventually.isTrue(sheet.isOpen());
         await assert.eventually.include(sheet.getContent(), 'Hello world!');
-    })
+    });
+
+    after(async () => {
+        return driver.quit();
+    });
 });
