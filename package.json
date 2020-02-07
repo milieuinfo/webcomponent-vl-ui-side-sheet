@@ -1,6 +1,9 @@
 {
   "name": "vl-ui-side-sheet",
   "version": "1.0.1",
+  "description": "Side-sheet zijn containers die aan de linker- of rechterrand van het scherm zijn verankerd.",
+  "author": "DIDM",
+  "license": "MIT",
   "main": "./src/index.js",
   "exports": {
     "require": "./index.js",
@@ -8,7 +11,17 @@
     "node": "./index.js",
     "default": "./index.js"
   },
-  "description": "Side-sheet zijn containers die aan de linker- of rechterrand van het scherm zijn verankerd.",
+  "homepage": "https://github.com/milieuinfo/webcomponent-vl-ui-side-sheet#readme",
+  "bugs": {
+    "url": "https://github.com/milieuinfo/webcomponent-vl-ui-side-sheet/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/milieuinfo/webcomponent-vl-ui-side-sheet.git"
+  },
+  "publishConfig": {
+    "registry": "http://artifactory-pr-build.lb.cumuli.be:8081/artifactory/api/npm/acd-npm/"
+  },
   "scripts": {
     "prepare": "npm update --dev vl-ui-util && npm run prepare:util",
     "prepare:util": "npm explore vl-ui-util -- npm run util",
@@ -45,26 +58,18 @@
     "release:testless": "np --yolo",
     "demo": "http-server"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/milieuinfo/webcomponent-vl-ui-side-sheet.git"
-  },
-  "publishConfig": {
-    "registry": "http://artifactory-pr-build.lb.cumuli.be:8081/artifactory/api/npm/acd-npm/"
-  },
-  "author": "DIDM",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/milieuinfo/webcomponent-vl-ui-side-sheet/issues"
-  },
-  "homepage": "https://github.com/milieuinfo/webcomponent-vl-ui-side-sheet#readme",
   "dependencies": {
-    "replace": "^1.1.1",
+    "swipe-detect": "1.0.1",
+    "vl-ui-core": "^4.0.0"
+  },
+  "peerDependencies": {
     "swipe-detect": "1.0.1",
     "vl-ui-core": "^4.0.0"
   },
   "devDependencies": {
+    "@govflanders/vl-ui-core": "3.9.1",
     "vl-ui-button": "^3.0.0",
+    "vl-ui-titles": "^2.0.0",
     "vl-ui-util": "^4.0.1"
   }
 }
