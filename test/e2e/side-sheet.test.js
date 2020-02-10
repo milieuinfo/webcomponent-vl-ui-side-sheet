@@ -26,7 +26,10 @@ describe('vl-side-sheet', async () => {
         await assert.eventually.include(sheet.getContent(), 'Hello world!');
     });
 
-    after(async () => {
-        return driver.quit();
+    after((done) => { 
+        if (driver) {
+            driver.quit();
+        }
+        done();
     });
 });

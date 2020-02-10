@@ -23,7 +23,8 @@ class VlSideSheet extends VlElement {
     }
 
     async getContent() {
-        return this._getSideSheet();
+        const slot = await this.findElement(By.css('*'));
+        return slot.getText();
     }
 }
 
