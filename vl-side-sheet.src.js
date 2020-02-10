@@ -1,5 +1,5 @@
 import { VlElement, define } from 'vl-ui-core';
-import swipeDetect from '/node_modules/swipe-detect/dist/index.js';
+import swipeDetect from 'swipe-detect/dist/index.js';
 
 /**
  * VlSide-sheet
