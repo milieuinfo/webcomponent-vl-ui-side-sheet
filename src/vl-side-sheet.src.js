@@ -27,7 +27,7 @@ import swipeDetect from '/node_modules/swipe-detect/dist/index.js';
  * @see {@link https://webcomponenten.omgeving.vlaanderen.be/demo/vl-side-sheet.html|Demo}
  *
  */
-export class VlSidesheet extends VlElement(HTMLElement) {
+export class VlSideSheet extends VlElement(HTMLElement) {
   static get _observedAttributes() {
     return ['left', 'right', 'enable-swipe'];
   }
@@ -134,4 +134,4 @@ export class VlSidesheet extends VlElement(HTMLElement) {
   }
 }
 
-define('vl-side-sheet', VlSidesheet);
+define('vl-side-sheet', VlSideSheet);
