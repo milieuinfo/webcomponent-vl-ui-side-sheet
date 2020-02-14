@@ -35,7 +35,7 @@ export class VlSideSheet extends VlElement(HTMLElement) {
   constructor() {
     super(`
       <style> 
-        @import "/node_modules/vl-ui-side-sheet/style.css";
+        @import '/node_modules/vl-ui-side-sheet/style.css';
       </style>  
       <div id="vl-side-sheet-backdrop"></div>
       <div id="vl-side-sheet">
