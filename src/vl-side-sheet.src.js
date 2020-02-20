@@ -2,9 +2,9 @@ import { VlElement, define } from '/node_modules/vl-ui-core/vl-core.js';
 import swipeDetect from '/node_modules/swipe-detect/dist/index.js';
 
 /**
- * VlSide-sheet
+ * VlSideSheet
  * @class
- * @classdesc Side-sheet zijn containers die aan de linker- of rechterrand van het scherm zijn verankerd.
+ * @classdesc SideSheet zijn containers die aan de linker- of rechterrand van het scherm zijn verankerd.
  *
  * @extends VlElement
  *
