@@ -1,3 +1,3 @@
 module.exports = { 
-    VlSideSheet: require('../vl-side-sheet.src.js').VlSideSheet
+    VlSideSheet: require('../src/vl-side-sheet.src.js').VlSideSheet
 }

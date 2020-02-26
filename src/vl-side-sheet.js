@@ -1,4 +1,4 @@
-import { VlElement, define } from '/node_modules/vl-ui-core/vl-core.js';
+import { VlElement, define } from '/node_modules/vl-ui-core/dist/vl-core.js';
 import swipeDetect from '/node_modules/swipe-detect/dist/index.js';
 
 /**
@@ -35,7 +35,7 @@ export class VlSideSheet extends VlElement(HTMLElement) {
   constructor() {
     super(`
       <style> 
-        @import '/style.css';
+        @import '/src/style.css';
       </style>  
       <div id="vl-side-sheet-backdrop"></div>
       <div id="vl-side-sheet">
