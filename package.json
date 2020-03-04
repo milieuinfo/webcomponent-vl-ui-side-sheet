@@ -53,7 +53,7 @@
   },
   "devDependencies": {
     "@govflanders/vl-ui-core": "3.9.1",
-    "vl-ui-button": "^4.0.0",
+    "vl-ui-button": "^4.0.1",
     "vl-ui-titles": "^3.0.0",
     "vl-ui-util": "^5.0.7"
   }
