@@ -65,8 +65,8 @@ describe('vl-side-sheet', async () => {
     it('als gebruiker zie ik het onderscheid tussen sidesheets die al dan niet kunnen gesloten worden door swipen', async () => {
     	const sheetSwipeDisabled = await vlSideSheetPage.getSidesheet();
     	const sheetSwipeEnabled = await vlSideSheetPage.getSidesheetLeft();
-    	await assert.eventually.isFalse(sheetSwipeDisabled.isEnableSwipe());
-    	await assert.eventually.isTrue(sheetSwipeEnabled.isEnableSwipe());
+    	await assert.eventually.isFalse(sheetSwipeDisabled.isSwipeEnabled());
+    	await assert.eventually.isTrue(sheetSwipeEnabled.isSwipeEnabled());
     });
     
 

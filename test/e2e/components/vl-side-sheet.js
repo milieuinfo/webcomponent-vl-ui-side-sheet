@@ -15,7 +15,7 @@ class VlSideSheet extends VlElement {
     	return this.hasAttribute('left');
     }
 
-    async isEnableSwipe() {
+    async isSwipeEnabled() {
     	return this.hasAttribute('enable-swipe');
     }
     
