@@ -2,29 +2,35 @@ const { VlElement } = require('vl-ui-core').Test;
 const { By } = require('selenium-webdriver');
 
 class VlSideSheet extends VlElement {  
-    async _getSideSheet() {
-        return this.shadowRoot;
-    }
 
     async _getCloseButton() {
-        return (await this._getSideSheet()).findElement(By.css('button.vl-side-sheet__close'));
+        return this.shadowRoot.findElement(By.css('button.vl-side-sheet__close'));
     }
 
     async isOpen() {
-        return (await this._getSideSheet()).hasAttribute('open');
+        return this.shadowRoot.hasAttribute('open');
     }
 
+    async isLeft() {
+    	return this.hasAttribute('left');
+    }
+
+    async isSwipeEnabled() {
+    	return this.hasAttribute('enable-swipe');
+    }
+    
     async close() {
-        return (await this._getCloseButton()).click();
+    	const closeButton = await this._getCloseButton();
+        return closeButton.click();
+    }
+    
+    async getContentSlotNodes() {
+    	const contentSlot = await this._getContentSlot();
+    	return this.getAssignedNodes(contentSlot);
     }
 
-    async getText() {
-        return (await this._getSideSheet()).getText();
-    }
-
-    async getContent() {
-        const slot = await this.findElement(By.css('*'));
-        return slot.getText();
+    async _getContentSlot() {
+        return this.shadowRoot.findElement(By.css('#vl-side-sheet slot'));
     }
 }
 
