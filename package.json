@@ -45,16 +45,17 @@
   },
   "dependencies": {
     "swipe-detect": "1.0.1",
-    "vl-ui-core": "^5.0.1"
+    "vl-ui-core": "^5.0.2"
   },
   "peerDependencies": {
     "swipe-detect": "1.0.1",
-    "vl-ui-core": "^5.0.1"
+    "vl-ui-core": "^5.0.2"
   },
   "devDependencies": {
     "@govflanders/vl-ui-core": "3.9.1",
-    "vl-ui-button": "^4.0.1",
+    "vl-ui-button": "^5.0.1",
+    "vl-ui-datepicker": "github:milieuinfo/webcomponent-vl-ui-datepicker#increase-timeout",
     "vl-ui-titles": "^3.0.0",
-    "vl-ui-util": "^5.0.7"
+    "vl-ui-util": "^5.0.8"
   }
 }
