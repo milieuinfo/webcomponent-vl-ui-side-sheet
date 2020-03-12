@@ -1,4 +1,3 @@
-
 const { assert, driver } = require('vl-ui-core').Test.Setup;
 const VlSideSheetPage = require('./pages/vl-side-sheet.page');
 
@@ -68,6 +67,14 @@ describe('vl-side-sheet', async () => {
     	await assert.eventually.isFalse(sheetSwipeDisabled.isSwipeEnabled());
     	await assert.eventually.isTrue(sheetSwipeEnabled.isSwipeEnabled());
     });
-    
 
+    it('als gebruiker kan ik interageren met een datepicker die op een sidesheet staat', async () => {
+        await vlSideSheetPage.clickOpenSideSheetButton();
+
+        const datepicker = await vlSideSheetPage.getSidesheetDatepicker();
+        await datepicker.selectYear(2018);
+        await datepicker.selectMonth('augustus');
+        await datepicker.selectDay(29);
+        await assert.eventually.equal(datepicker.getInputValue(), '29.08.2018');
+    });
 });

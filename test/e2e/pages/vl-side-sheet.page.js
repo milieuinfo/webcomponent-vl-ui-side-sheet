@@ -2,6 +2,7 @@ const VlSideSheet = require('../components/vl-side-sheet');
 const { Page, Config } = require('vl-ui-core').Test;
 const { By } = require('selenium-webdriver');
 const { VlButton } = require('vl-ui-button').Test;
+const { VlDatepicker } = require('vl-ui-datepicker').Test;
 
 class VlSideSheetPage extends Page {
     async _getSideSheet(selector) {
@@ -42,6 +43,19 @@ class VlSideSheetPage extends Page {
 
     async getSidesheetLeft() {
     	return this._getSideSheet('#vl-side-sheet-left');
+    }
+
+    async clickOpenSideSheetButton() {
+        const button = await this._getButton('#side-sheet-with-datepicker-open-button');
+        await button.click();
+    }
+
+    async getSidesheetDatepicker() {
+        return this._getDatepicker('#vl-datepicker');
+    }
+
+    async _getDatepicker(selector) {
+        return new VlDatepicker(this.driver, selector);
     }
 
     async load() {
