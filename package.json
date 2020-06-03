@@ -45,17 +45,17 @@
   },
   "dependencies": {
     "swipe-detect": "1.0.1",
-    "vl-ui-core": "^5.1.2"
+    "vl-ui-core": "^5.5.1"
   },
   "peerDependencies": {
     "swipe-detect": "1.0.1",
-    "vl-ui-core": "^5.0.2"
+    "vl-ui-core": "^5.5.1"
   },
   "devDependencies": {
     "@govflanders/vl-ui-core": "3.9.2",
     "vl-ui-button": "^5.0.1",
     "vl-ui-datepicker": "^3.0.1",
     "vl-ui-titles": "^3.0.0",
-    "vl-ui-util": "^5.1.9"
+    "vl-ui-util": "^5.2.0"
   }
 }
