@@ -25,7 +25,7 @@ class VlSideSheet extends VlElement {
 
   async getContentSlotNodes() {
     const contentSlot = await this._getContentSlot();
-    return this.getAssignedNodes(contentSlot);
+    return this.getAssignedElements(contentSlot);
   }
 
   async _getContentSlot() {

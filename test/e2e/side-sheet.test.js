@@ -4,8 +4,8 @@ const VlSideSheetPage = require('./pages/vl-side-sheet.page');
 describe('vl-side-sheet', async () => {
   const vlSideSheetPage = new VlSideSheetPage(driver);
 
-  before(() => {
-    return vlSideSheetPage.load();
+  before(async () => {
+    await vlSideSheetPage.load();
   });
 
   it('als gebruiker kan ik de side-sheet programmatorisch openen en sluiten via toggle', async () => {

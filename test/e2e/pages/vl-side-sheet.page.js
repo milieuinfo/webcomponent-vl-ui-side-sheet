@@ -3,6 +3,8 @@ const {Page, Config} = require('vl-ui-core').Test;
 const {By} = require('selenium-webdriver');
 const {VlButton} = require('vl-ui-button').Test;
 const {VlDatepicker} = require('vl-ui-datepicker').Test;
+const {VlHeader} = require('vl-ui-header').Test;
+const {VlFooter} = require('vl-ui-footer').Test;
 
 class VlSideSheetPage extends Page {
   async _getSideSheet(selector) {
@@ -60,6 +62,10 @@ class VlSideSheetPage extends Page {
 
   async load() {
     await super.load(Config.baseUrl + '/demo/vl-side-sheet.html');
+    const header = await new VlHeader(this.driver);
+    const footer = await new VlFooter(this.driver);
+    await header.remove();
+    await footer.remove();
   }
 }
 
