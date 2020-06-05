@@ -4,7 +4,7 @@ const VlSideSheetPage = require('./pages/vl-side-sheet.page');
 describe('vl-side-sheet', async () => {
   const vlSideSheetPage = new VlSideSheetPage(driver);
 
-  before(async () => {
+  beforeEach(async () => {
     await vlSideSheetPage.load();
   });
 
