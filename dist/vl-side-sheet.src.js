@@ -1,4 +1,4 @@
-import { VlElement, define } from 'vl-ui-core';
+import {vlElement, define} from 'vl-ui-core';
 import swipeDetect from 'swipe-detect/dist/index.js';
 
 /**
@@ -6,7 +6,8 @@ import swipeDetect from 'swipe-detect/dist/index.js';
  * @class
  * @classdesc SideSheet zijn containers die aan de linker- of rechterrand van het scherm zijn verankerd.
  *
- * @extends VlElement
+ * @extends HTMLElement
+ * @mixin vlElement
  *
  * @property {boolean} left - Attribute wordt gebruikt om aan te duiden dat de side-sheet de linkererand van het scherm moet plaatsen.
  * @property {boolean} right - Attribute wordt gebruikt om aan te duiden dat de side-sheet de rechterkant van het scherm moet plaatsen.
@@ -27,7 +28,7 @@ import swipeDetect from 'swipe-detect/dist/index.js';
  * @see {@link https://webcomponenten.omgeving.vlaanderen.be/demo/vl-side-sheet.html|Demo}
  *
  */
-export class VlSideSheet extends VlElement(HTMLElement) {
+export class VlSideSheet extends vlElement(HTMLElement) {
   static get _observedAttributes() {
     return ['left', 'right', 'enable-swipe'];
   }
@@ -50,7 +51,7 @@ export class VlSideSheet extends VlElement(HTMLElement) {
   }
 
   connectedCallback() {
-    this._closeButton.addEventListener("click", () => this.close());
+    this._closeButton.addEventListener('click', () => this.close());
   }
 
   get isOpen() {
@@ -75,7 +76,7 @@ export class VlSideSheet extends VlElement(HTMLElement) {
 
   /**
    * Triggert een toggle van de side-sheet zonder te klikken op de side-sheet.
-   * 
+   *
    * @Return {void}
    */
   toggle() {
@@ -84,7 +85,7 @@ export class VlSideSheet extends VlElement(HTMLElement) {
 
   /**
    * Handmatig openen van de side-sheet
-   * 
+   *
    * @Return {void}
    */
   open() {
@@ -94,7 +95,7 @@ export class VlSideSheet extends VlElement(HTMLElement) {
 
   /**
    * Handmatig sluiten van de side-sheet
-   * 
+   *
    * @Return {void}
    */
   close() {
@@ -107,8 +108,8 @@ export class VlSideSheet extends VlElement(HTMLElement) {
 
   /**
    * De callback wordt uitgevoerd direct na de afsluiten van een side sheet.
-   * 
-   * @param {function} callback 
+   *
+   * @param {function} callback
    */
   onClose(callback) {
     this._onClose = callback;
@@ -122,7 +123,7 @@ export class VlSideSheet extends VlElement(HTMLElement) {
     }
   }
 
-  _enable_swipeChangedCallback(oldValue, newValue) {
+  _enableSwipeChangedCallback(oldValue, newValue) {
     if (newValue !== undefined) {
       swipeDetect(this._sheetElement, (direction) => {
         if ((this.isLeft && direction === 'left') || (!this.isLeft && direction === 'right')) {
