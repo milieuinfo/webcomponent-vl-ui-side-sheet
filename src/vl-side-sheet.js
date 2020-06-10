@@ -7,7 +7,6 @@ import swipeDetect from '/node_modules/swipe-detect/dist/index.js';
  * @classdesc SideSheet zijn containers die aan de linker- of rechterrand van het scherm zijn verankerd.
  *
  * @extends HTMLElement
- * @mixin vlElement
  *
  * @property {boolean} left - Attribute wordt gebruikt om aan te duiden dat de side-sheet de linkererand van het scherm moet plaatsen.
  * @property {boolean} right - Attribute wordt gebruikt om aan te duiden dat de side-sheet de rechterkant van het scherm moet plaatsen.
