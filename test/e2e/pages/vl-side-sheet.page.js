@@ -59,7 +59,7 @@ class VlSideSheetPage extends Page {
   }
 
   async load() {
-    await super.load(Config.baseUrl + '/demo/vl-side-sheet.html?no-header=true&no-footer=true');
+    await super.load(Config.baseUrl + '/demo/vl-side-sheet.html');
   }
 }
 
