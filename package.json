@@ -56,6 +56,6 @@
     "vl-ui-button": "^5.0.5",
     "vl-ui-datepicker": "^3.0.5",
     "vl-ui-titles": "^3.0.4",
-    "vl-ui-util": "^5.2.4"
+    "vl-ui-util": "^5.2.8"
   }
 }

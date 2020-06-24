@@ -26,60 +26,47 @@
       sidesheet = fixture('vl-side-sheet-fixture');
     });
 
-    test('open de side sheet', () => {
+    test('de open functie zal de side sheet openen en het open attribuut zetten', () => {
       sidesheet.open();
-      assert.isTrue(sidesheet._sheetElement.hasAttribute('open'));
-      assert.isTrue(sidesheet._backdropElement.hasAttribute('open'));
+      assert.isTrue(sidesheet.hasAttribute('data-vl-open'));
       assert.isTrue(sidesheet.isOpen);
     });
 
-    test('close de side sheet', () => {
+    test('de close functie zal de side sheet sluiten en het open attribuut verwijderen', () => {
       sidesheet.close();
-      assert.isFalse(sidesheet._sheetElement.hasAttribute('open'));
-      assert.isFalse(sidesheet._backdropElement.hasAttribute('open'));
+      assert.isFalse(sidesheet.hasAttribute('data-vl-open'));
     });
 
-    test('toggle de side sheet', () => {
+    test('de toggle functie zal de side sheet openen en sluiten en het bijhorende attribuut zetten', () => {
       sidesheet.open();
-      assert.isTrue(sidesheet._sheetElement.hasAttribute('open'));
-      assert.isTrue(sidesheet._backdropElement.hasAttribute('open'));
+      assert.isTrue(sidesheet.hasAttribute('data-vl-open'));
       sidesheet.toggle();
-      assert.isFalse(sidesheet._sheetElement.hasAttribute('open'));
-      assert.isFalse(sidesheet._backdropElement.hasAttribute('open'));
+      assert.isFalse(sidesheet.hasAttribute('data-vl-open'));
       sidesheet.toggle();
-      assert.isTrue(sidesheet._sheetElement.hasAttribute('open'));
-      assert.isTrue(sidesheet._backdropElement.hasAttribute('open'));
+      assert.isTrue(sidesheet.hasAttribute('data-vl-open'));
     });
 
-    test('close button werkt', () => {
+    test('de side sheet kan gesloten worden via het sluit icoon', () => {
       sidesheet.open();
-      assert.isTrue(sidesheet._sheetElement.hasAttribute('open'));
-      assert.isTrue(sidesheet._backdropElement.hasAttribute('open'));
+      assert.isTrue(sidesheet.hasAttribute('data-vl-open'));
       sidesheet.shadowRoot.querySelector('.vl-side-sheet__close').click();
-      assert.isFalse(sidesheet._sheetElement.hasAttribute('open'));
-      assert.isFalse(sidesheet._backdropElement.hasAttribute('open'));
+      assert.isFalse(sidesheet.hasAttribute('data-vl-open'));
     });
 
-    test('positoneren', () => {
-      assert.isFalse(sidesheet._sheetElement.hasAttribute('data-vl-side-sheet-left'));
+    test('de side sheet kan ook links gepositioneerd worden', () => {
+      assert.isFalse(sidesheet._sheetElement.classList.contains('vl-side-sheet--left'));
       sidesheet.setAttribute('data-vl-left', '');
-      flush(() => {
-        assert.isTrue(sidesheet._sheetElement.hasAttribute('data-vl-side-sheet-left'));
-      });
+      assert.isTrue(sidesheet._sheetElement.classList.contains('vl-side-sheet--left'));
     });
 
-    test('onclose callback wordt uitgevoerd', () => {
+    test('de close callback wordt uitgevoerd bij het sluiten van de side sheet', () => {
       const callback = sinon.spy();
-      flush(() => {
-        sidesheet.onClose(callback);
-        sidesheet.open();
-        assert.isTrue(sidesheet._sheetElement.hasAttribute('open'));
-        assert.isTrue(sidesheet._backdropElement.hasAttribute('open'));
-        sidesheet.shadowRoot.querySelector('.vl-side-sheet__close').click();
-        assert.isFalse(sidesheet._sheetElement.hasAttribute('open'));
-        assert.isFalse(sidesheet._backdropElement.hasAttribute('open'));
-        assert.isTrue(callback.calledOnce());
-      });
+      sidesheet.onClose(callback);
+      sidesheet.open();
+      assert.isTrue(sidesheet.hasAttribute('data-vl-open'));
+      sidesheet.shadowRoot.querySelector('.vl-side-sheet__close').click();
+      assert.isFalse(sidesheet.hasAttribute('data-vl-open'));
+      assert.isTrue(callback.calledOnce);
     });
   });
 </script>

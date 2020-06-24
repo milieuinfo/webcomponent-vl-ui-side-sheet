@@ -36,7 +36,6 @@ export class VlSideSheet extends vlElement(HTMLElement) {
     super(`
       <style> 
         @import '/src/style.css';
-        @import '/node_modules/vl-ui-core/dist/style.css';
       </style>  
       <div id="vl-side-sheet-backdrop"></div>
       <div id="vl-side-sheet">
@@ -54,11 +53,11 @@ export class VlSideSheet extends vlElement(HTMLElement) {
   }
 
   get isOpen() {
-    return this._element.hasAttribute('open');
+    return this.hasAttribute('data-vl-open');
   }
 
   get isLeft() {
-    return this.hasAttribute('left');
+    return !!this.getAttribute('left');
   }
 
   get _closeButton() {
@@ -88,8 +87,7 @@ export class VlSideSheet extends vlElement(HTMLElement) {
    * @Return {void}
    */
   open() {
-    this._sheetElement.setAttribute('open', '');
-    this._backdropElement.setAttribute('open', '');
+    this.setAttribute('data-vl-open', '');
   }
 
   /**
@@ -98,8 +96,7 @@ export class VlSideSheet extends vlElement(HTMLElement) {
    * @Return {void}
    */
   close() {
-    this._sheetElement.removeAttribute('open');
-    this._backdropElement.removeAttribute('open');
+    this.removeAttribute('data-vl-open');
     if (this._onClose) {
       this._onClose();
     }

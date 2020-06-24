@@ -10,8 +10,11 @@
 
 $break-small: 767px;
 
-#vl-side-sheet{
-  display: none;
+:host(:not([data-vl-open])) {
+  display: none; 
+}
+
+#vl-side-sheet {
   position: fixed;
   top: 0;
   width: var(--vl-side-sheet-width, calc(100%/3));
@@ -23,6 +26,7 @@ $break-small: 767px;
     border: 0;
     box-shadow: 0 0 2.1rem 0 rgba(0, 0, 0, 0.3);
   }
+
   height: 100vh;
   z-index: 1001;
   background: white;
@@ -30,8 +34,20 @@ $break-small: 767px;
   overflow: scroll;
 }
 
-#vl-side-sheet[open]{
-  display: block;
+:host([open]) {
+  #vl-side-sheet-backdrop {
+    @media screen and (max-width: $break-small) {
+     display: block;
+    }
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(2px);
+  }
 }
 
 #vl-side-sheet-backdrop {
@@ -41,20 +57,6 @@ $break-small: 767px;
 .vl-side-sheet--left {
   left: 0;
   border-right: 1px solid #cbd2da;
-}
-
-#vl-side-sheet-backdrop[open] {
-  @media screen and (max-width: $break-small) {
-   display: block;
-  }
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(2px);
 }
 
 .vl-side-sheet__close {
@@ -68,17 +70,26 @@ $break-small: 767px;
   border: 0;
   background: none;
   line-height: 1;
-  overflow: hidden; }
+  overflow: hidden;
+}
+
 .vl-side-sheet__close:hover .vl-side-sheet__close__icon, .vl-side-sheet__close:focus .vl-side-sheet__close__icon {
-  color: #05c; }
+  color: #05c;
+}
+
 @media screen and (max-width: 767px) {
   .vl-side-sheet__close {
     top: 0;
-    right: 0; } }
+    right: 0; 
+  } 
+}
+
 .vl-side-sheet__close__icon {
   display: flex;
   font-size: 1.4rem;
-  line-height: 1; }
+  line-height: 1;
+}
+
 .vl-side-sheet__close__icon::before, .vl-side-sheet__close__icon::after {
   font-family: "vlaanderen-icon" !important;
   -webkit-font-smoothing: antialiased;
@@ -87,11 +98,16 @@ $break-small: 767px;
   font-variant: normal;
   font-weight: normal;
   text-decoration: none;
-  text-transform: none; }
+  text-transform: none;
+}
+
 .vl-side-sheet__close__icon::before {
-  content: "\f16f"; }
+  content: "\f16f";
+}
+
 .vl-side-sheet__close__icon.vl-icon {
-  margin-right: 0; }
+  margin-right: 0;
+}
 
 .vl-u-visually-hidden {
   position: absolute !important;
@@ -103,4 +119,5 @@ $break-small: 767px;
   padding: 0;
   border: 0;
   left: 0;
-  top: 0; }
+  top: 0;
+}
