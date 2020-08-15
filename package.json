@@ -38,11 +38,11 @@
   },
   "dependencies": {
     "swipe-detect": "1.0.1",
-    "vl-ui-core": "^5.5.5"
+    "vl-ui-core": "^6.0.0"
   },
   "peerDependencies": {
     "swipe-detect": "1.0.1",
-    "vl-ui-core": "^5.5.5"
+    "vl-ui-core": "^6.0.0"
   },
   "devDependencies": {
     "@govflanders/vl-ui-core": "3.10.1",
