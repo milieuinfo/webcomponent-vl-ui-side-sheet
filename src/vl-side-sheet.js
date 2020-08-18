@@ -55,7 +55,7 @@ export class VlSideSheet extends vlElement(HTMLElement) {
   }
 
   get isOpen() {
-    return this._element.hasAttribute('open');
+    return this._element.hasAttribute('data-vl-open');
   }
 
   get isLeft() {
@@ -89,8 +89,8 @@ export class VlSideSheet extends vlElement(HTMLElement) {
    * @Return {void}
    */
   open() {
-    this._sheetElement.setAttribute('open', '');
-    this._backdropElement.setAttribute('open', '');
+    this._sheetElement.setAttribute('data-vl-open', '');
+    this._backdropElement.setAttribute('data-vl-open', '');
   }
 
   /**
@@ -99,8 +99,8 @@ export class VlSideSheet extends vlElement(HTMLElement) {
    * @Return {void}
    */
   close() {
-    this._sheetElement.removeAttribute('open');
-    this._backdropElement.removeAttribute('open');
+    this._sheetElement.removeAttribute('data-vl-open');
+    this._backdropElement.removeAttribute('data-vl-open');
     if (this._onClose) {
       this._onClose();
     }

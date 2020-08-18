@@ -60,9 +60,9 @@
       });
 
       test('positoneren', () => {
-        assert.isFalse(sidesheet._sheetElement.hasAttribute('data-vl-side-sheet-left'));
+        assert.isFalse(sidesheet._sheetElement.classList.contains('vl-side-sheet--left'));
         sidesheet.setAttribute('data-vl-left', '');
-        assert.isTrue(sidesheet._sheetElement.hasAttribute('data-vl-side-sheet-left'));
+        assert.isTrue(sidesheet._sheetElement.classList.contains('vl-side-sheet--left'));
       });
 
       test('onclose callback wordt uitgevoerd', () => {
@@ -74,7 +74,7 @@
         sidesheet.shadowRoot.querySelector('.vl-side-sheet__close').click();
         assert.isFalse(sidesheet._sheetElement.hasAttribute('data-vl-open'));
         assert.isFalse(sidesheet._backdropElement.hasAttribute('data-vl-open'));
-        assert.isTrue(callback.calledOnce());
+        assert.isTrue(callback.calledOnce);
       });
     });
   </script>
