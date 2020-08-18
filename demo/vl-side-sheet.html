@@ -4,19 +4,20 @@
 <head>
     <title>vl-side-sheet voorbeeld</title>
     <script type="module" src="/node_modules/vl-ui-demo/dist/vl-demo-all.js"></script>
-
-    <script type="module" src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script type="module" src="/node_modules/vl-ui-body/dist/vl-body.js"></script>
     <script type="module" src="/node_modules/vl-ui-button/dist/vl-button.js"></script>
     <script type="module" src="/node_modules/vl-ui-titles/dist/vl-titles.js"></script>
     <script type="module" src="/node_modules/vl-ui-datepicker/dist/vl-datepicker.js"></script>
+
     <script type="module" src="/src/vl-side-sheet.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="/node_modules/vl-ui-body/dist/style.css" />
     <link rel="stylesheet" type="text/css" href="/node_modules/vl-ui-button/dist/style.css" />
     <link rel="stylesheet" type="text/css" href="/node_modules/vl-ui-titles/dist/style.css" />
     <link rel="stylesheet" type="text/css" href="/node_modules/vl-ui-datepicker/dist/style.css" />
 </head>
 
-<body>
+<body is="vl-body">
     <vl-demo-page data-vl-webcomponent="vl-side-sheet">
         <vl-demo data-vl-title="Toggle">
             <button id="vl-side-sheet-toggle-button" is="vl-button" type="button" onclick="document.getElementById('vl-side-sheet').toggle();">Toggle</button>

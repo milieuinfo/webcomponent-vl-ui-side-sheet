@@ -38,17 +38,18 @@
   },
   "dependencies": {
     "swipe-detect": "^1.0.1",
-    "vl-ui-core": "milieuinfo/webcomponent-vl-ui-core#3.11.5"
+    "vl-ui-core": "^6.0.0"
   },
   "peerDependencies": {
     "swipe-detect": "^1.0.1",
-    "vl-ui-core": "milieuinfo/webcomponent-vl-ui-core#3.11.5"
+    "vl-ui-core": "^6.0.0"
   },
   "devDependencies": {
     "@govflanders/vl-ui-core": "^4.0.5",
-    "vl-ui-button": "milieuinfo/webcomponent-vl-ui-button#3.11.5",
-    "vl-ui-datepicker": "milieuinfo/webcomponent-vl-ui-datepicker#3.11.5",
-    "vl-ui-titles": "github:milieuinfo/webcomponent-vl-ui-titles#3.11.5",
-    "vl-ui-util": "github:milieuinfo/webcomponent-vl-ui-util#3.11.5"
+    "vl-ui-button": "^5.0.6",
+    "vl-ui-datepicker": "^3.0.7",
+    "vl-ui-titles": "^3.0.6",
+    "vl-ui-upload": "^3.0.5",
+    "vl-ui-util": "^5.2.12"
   }
 }
