@@ -4,19 +4,20 @@
 <head>
     <title>vl-side-sheet voorbeeld</title>
     <script type="module" src="/node_modules/vl-ui-demo/dist/vl-demo-all.js"></script>
-
-    <script type="module" src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script type="module" src="/node_modules/vl-ui-body/dist/vl-body.js"></script>
     <script type="module" src="/node_modules/vl-ui-button/dist/vl-button.js"></script>
     <script type="module" src="/node_modules/vl-ui-titles/dist/vl-titles.js"></script>
     <script type="module" src="/node_modules/vl-ui-datepicker/dist/vl-datepicker.js"></script>
+
     <script type="module" src="/src/vl-side-sheet.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="/node_modules/vl-ui-body/dist/style.css" />
     <link rel="stylesheet" type="text/css" href="/node_modules/vl-ui-button/dist/style.css" />
     <link rel="stylesheet" type="text/css" href="/node_modules/vl-ui-titles/dist/style.css" />
     <link rel="stylesheet" type="text/css" href="/node_modules/vl-ui-datepicker/dist/style.css" />
 </head>
 
-<body>
+<body is="vl-body">
     <vl-demo-page data-vl-webcomponent="vl-side-sheet">
         <vl-demo data-vl-title="Toggle">
             <button id="vl-side-sheet-toggle-button" is="vl-button" type="button" onclick="document.getElementById('vl-side-sheet').toggle();">Toggle</button>
@@ -30,14 +31,14 @@
 
         <vl-demo data-vl-title="Positioneert links">
             <button is="vl-button" type="button" onclick="document.getElementById('vl-side-sheet-left').toggle();">Open</button>
-            <vl-side-sheet id="vl-side-sheet-left" left enable-swipe>
+            <vl-side-sheet id="vl-side-sheet-left" data-vl-left data-vl-enable-swipe>
                 <h1 is="vl-h1">Hello world!</h1>
             </vl-side-sheet>
         </vl-demo>
 
         <vl-demo data-vl-title="Sidesheet met datepicker">
             <button id="side-sheet-with-datepicker-open-button" is="vl-button" onclick="document.querySelector('#vl-side-sheet-with-datepicker').open()">Open</button>
-            <vl-side-sheet left id="vl-side-sheet-with-datepicker" style="--vl-side-sheet-width: 360px;">
+            <vl-side-sheet id="vl-side-sheet-with-datepicker" data-vl-left style="--vl-side-sheet-width: 360px;">
                 <vl-datepicker id="vl-datepicker"></vl-datepicker>
             </vl-side-sheet>
         </vl-demo>
