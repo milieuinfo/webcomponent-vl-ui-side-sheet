@@ -20,7 +20,7 @@ import swipeDetect from '/node_modules/swipe-detect/dist/index.js';
         :host {
          --vl-side-sheet-width: 480px;
          }
-        `
+      `
     ];
   }
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-side-sheet/releases/latest|Release notes}
@@ -55,7 +55,7 @@ export class VlSideSheet extends vlElement(HTMLElement) {
   }
 
   get isOpen() {
-    return this._element.hasAttribute('data-vl-open');
+    return this._element.hasAttribute('open');
   }
 
   get isLeft() {
@@ -89,8 +89,8 @@ export class VlSideSheet extends vlElement(HTMLElement) {
    * @Return {void}
    */
   open() {
-    this._sheetElement.setAttribute('data-vl-open', '');
-    this._backdropElement.setAttribute('data-vl-open', '');
+    this._sheetElement.setAttribute('open', '');
+    this._backdropElement.setAttribute('open', '');
   }
 
   /**
@@ -99,8 +99,8 @@ export class VlSideSheet extends vlElement(HTMLElement) {
    * @Return {void}
    */
   close() {
-    this._sheetElement.removeAttribute('data-vl-open');
-    this._backdropElement.removeAttribute('data-vl-open');
+    this._sheetElement.removeAttribute('open');
+    this._backdropElement.removeAttribute('open');
     if (this._onClose) {
       this._onClose();
     }
