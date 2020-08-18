@@ -1,6 +1,6 @@
 const VlSideSheet = require('../components/vl-side-sheet');
 const {Page, Config} = require('vl-ui-core').Test;
-const {By} = require('selenium-webdriver');
+const {By} = require('vl-ui-core').Test.Setup;
 const {VlButton} = require('vl-ui-button').Test;
 const {VlDatepicker} = require('vl-ui-datepicker').Test;
 
