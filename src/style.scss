@@ -33,7 +33,7 @@ $break-small: 767px;
   height: 100vh;
   z-index: 1001;
   background: white;
-  overflow: scroll;
+  overflow: auto;
 
   [is="vl-layout"] {
     min-width: auto;
