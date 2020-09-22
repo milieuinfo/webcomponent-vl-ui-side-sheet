@@ -51,7 +51,7 @@
     "vl-ui-body": "^1.0.4",
     "vl-ui-button": "^5.0.6",
     "vl-ui-datepicker": "^3.0.7",
-    "vl-ui-template": "milieuinfo/webcomponent-vl-ui-template#v-center",
+    "vl-ui-template": "^3.1.0",
     "vl-ui-titles": "^3.0.6",
     "vl-ui-upload": "^3.0.5",
     "vl-ui-util": "^5.2.13"
