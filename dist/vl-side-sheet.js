@@ -1,4 +1,5 @@
 import {vlElement, define} from '/node_modules/vl-ui-core/dist/vl-core.js';
+import '/node_modules/vl-ui-grid/dist/vl-grid.js';
 import swipeDetect from '/node_modules/swipe-detect/dist/index.js';
 
 /**
@@ -37,15 +38,19 @@ export class VlSideSheet extends vlElement(HTMLElement) {
     super(`
       <style> 
         @import '/node_modules/vl-ui-side-sheet/dist/style.css';
-        @import '/node_modules/vl-ui-core/dist/style.css';
+        @import '/node_modules/vl-ui-grid/dist/style.css';
       </style>  
       <div id="vl-side-sheet-backdrop"></div>
       <div id="vl-side-sheet">
+        <section is="vl-region">
+          <div is="vl-layout">
+            <slot></slot>
+          </div>
+        </section>
         <button type="button" class="vl-side-sheet__close">
           <i class="vl-side-sheet__close__icon vl-vi vl-vi-cross" aria-hidden="true"></i>
           <span class="vl-u-visually-hidden">Venster sluiten</span>
         </button>
-        <slot></slot>
       </div>
     `);
   }
