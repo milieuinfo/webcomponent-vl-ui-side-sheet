@@ -10,9 +10,10 @@ import swipeDetect from '/node_modules/swipe-detect/dist/index.js';
  * @extends HTMLElement
  * @mixes vlElement
  *
- * @property {boolean} data-vl-left - Attribute wordt gebruikt om aan te duiden dat de side-sheet de linkererand van het scherm moet plaatsen.
- * @property {boolean} data-vl-right - Attribute wordt gebruikt om aan te duiden dat de side-sheet de rechterkant van het scherm moet plaatsen.
  * @property {boolean} data-vl-enable-swipe - Attribute wordt gebruikt om aan te duiden dat swipe functie toegelaten is.
+ * @property {boolean} data-vl-left - Attribute wordt gebruikt om aan te duiden dat de side-sheet de linkererand van het scherm moet plaatsen.
+ * @property {boolean} data-vl-absolute - Attribute wordt gebruikt om aan te duiden dat de side-sheet absoluut gepositioneerd wordt.
+ * @property {boolean} data-vl-right - Attribute wordt gebruikt om aan te duiden dat de side-sheet de rechterkant van het scherm moet plaatsen.
  *
  * @example Breedte van de side sheet aanpassen(op grote scherm):
  *  static get styles() {
