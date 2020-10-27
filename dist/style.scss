@@ -28,10 +28,15 @@ $break-small: 767px;
   background: white;
   overflow: auto;
 
-  &[data-vl-absolute] {
+  &.vl-side-sheet--absolute {
     padding-top: 0px;
     position: absolute;
     height: 100%;
+  }
+
+  &.vl-side-sheet--left {
+    left: 0;
+    border-right: 1px solid #cbd2da;
   }
 
   @media screen and (max-width: $break-small) {
@@ -51,11 +56,6 @@ $break-small: 767px;
 
 #vl-side-sheet-backdrop {
   display: none;
-}
-
-.vl-side-sheet--left {
-  left: 0;
-  border-right: 1px solid #cbd2da;
 }
 
 #vl-side-sheet-backdrop[open] {

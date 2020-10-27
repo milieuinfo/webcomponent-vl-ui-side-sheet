@@ -72,6 +72,10 @@ export class VlSideSheet extends vlElement(HTMLElement) {
     return this.hasAttribute('left');
   }
 
+  get _classPrefix() {
+    return 'vl-side-sheet--';
+  }
+
   get _closeButton() {
     return this._shadow.querySelector('.vl-side-sheet__close');
   }
