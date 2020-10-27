@@ -32,7 +32,11 @@ import swipeDetect from '/node_modules/swipe-detect/dist/index.js';
  */
 export class VlSideSheet extends vlElement(HTMLElement) {
   static get _observedAttributes() {
-    return ['left', 'right', 'enable-swipe'];
+    return ['enable-swipe'];
+  }
+
+  static get _observedClassAttributes() {
+    return ['left', 'right', 'absolute'];
   }
 
   constructor() {
@@ -119,14 +123,6 @@ export class VlSideSheet extends vlElement(HTMLElement) {
    */
   onClose(callback) {
     this._onClose = callback;
-  }
-
-  _leftChangedCallback(oldValue, newValue) {
-    if (newValue !== undefined) {
-      this._sheetElement.classList.add('vl-side-sheet--left');
-    } else {
-      this._sheetElement.classList.remove('vl-side-sheet--left');
-    }
   }
 
   _enableSwipeChangedCallback(oldValue, newValue) {
