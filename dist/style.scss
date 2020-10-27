@@ -15,7 +15,7 @@
 
 $break-small: 767px;
 
-#vl-side-sheet{
+#vl-side-sheet {
   display: none;
   position: fixed;
   top: 0;
@@ -27,17 +27,6 @@ $break-small: 767px;
   z-index: 1001;
   background: white;
   overflow: auto;
-
-  &.vl-side-sheet--absolute {
-    padding-top: 0px;
-    position: absolute;
-    height: 100%;
-  }
-
-  &.vl-side-sheet--left {
-    left: 0;
-    border-right: 1px solid #cbd2da;
-  }
 
   @media screen and (max-width: $break-small) {
     width: calc(100vw - 56px);
@@ -80,4 +69,24 @@ $break-small: 767px;
 
 .vl-side-sheet__close__icon {
   @extend .vl-modal-dialog__close__icon;
+}
+
+:host(.vl-side-sheet--absolute) {
+  #vl-side-sheet {
+    padding-top: 0px;
+    position: absolute;
+    height: 100%;
+    border: 1px solid #cbd2da;
+  }
+
+  .vl-side-sheet__close {
+    top: 0px;
+  }
+}
+
+:host(.vl-side-sheet--left) {
+  #vl-side-sheet { 
+    left: 0;
+    border-right: 1px solid #cbd2da;
+  }
 }

@@ -84,8 +84,16 @@ export class VlSideSheet extends vlElement(HTMLElement) {
     return this._shadow.querySelector('#vl-side-sheet');
   }
 
+  get _regionElement() {
+    return this._sheetElement.querySelector('[is="vl-region"]');
+  }
+
   get _backdropElement() {
     return this._shadow.querySelector('#vl-side-sheet-backdrop');
+  }
+
+  get _slotElement() {
+    return this._shadow.querySelector('slot');
   }
 
   /**
@@ -138,6 +146,13 @@ export class VlSideSheet extends vlElement(HTMLElement) {
       }, 50);
     } else {
       swipeDetect.disable();
+    }
+  }
+
+  _absoluteChangedCallback(oldValue, newValue) {
+    if (newValue != undefined) {
+      this._sheetElement.append(this._slotElement);
+      this._regionElement.remove();
     }
   }
 }

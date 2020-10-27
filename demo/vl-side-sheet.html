@@ -14,7 +14,6 @@
     <link rel="stylesheet" type="text/css" href="/node_modules/vl-ui-body/dist/style.css" />
     <link rel="stylesheet" type="text/css" href="/node_modules/vl-ui-button/dist/style.css" />
     <link rel="stylesheet" type="text/css" href="/node_modules/vl-ui-titles/dist/style.css" />
-    <link rel="stylesheet" type="text/css" href="/node_modules/vl-ui-datepicker/dist/style.css" />
 </head>
 
 <body is="vl-body">
@@ -48,9 +47,16 @@
 
         <vl-demo data-vl-title="Sidesheet met datepicker">
             <button id="side-sheet-with-datepicker-open-button" is="vl-button" onclick="document.querySelector('#vl-side-sheet-with-datepicker').open()">Open</button>
-            <vl-side-sheet id="vl-side-sheet-with-datepicker" data-vl-left style="--vl-side-sheet-width: 360px;">
+            <vl-side-sheet id="vl-side-sheet-with-datepicker" data-vl-left>
                 <h2 is="vl-h2">Datepicker</h2>
                 <vl-datepicker id="vl-datepicker"></vl-datepicker>
+            </vl-side-sheet>
+        </vl-demo>
+
+        <vl-demo data-vl-title="Sidesheet met absolute positionering">
+            <button id="side-sheet-absolute" is="vl-button" onclick="document.querySelector('#vl-side-sheet-absolute').open()">Open</button>
+            <vl-side-sheet id="vl-side-sheet-absolute" data-vl-absolute>
+                
             </vl-side-sheet>
         </vl-demo>
     </vl-demo-page>
