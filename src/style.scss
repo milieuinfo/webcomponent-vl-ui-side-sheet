@@ -23,17 +23,22 @@ $break-small: 767px;
   right: 0;
   border-left: 1px solid #cbd2da;
   padding-top: 43px;
+  height: 100vh;
+  z-index: 1001;
+  background: white;
+  overflow: auto;
+
+  &[data-vl-absolute] {
+    padding-top: 0px;
+    position: absolute;
+    height: 100%;
+  }
 
   @media screen and (max-width: $break-small) {
     width: calc(100vw - 56px);
     border: 0;
     box-shadow: 0 0 2.1rem 0 rgba(0, 0, 0, 0.3);
   }
-
-  height: 100vh;
-  z-index: 1001;
-  background: white;
-  overflow: auto;
 
   [is="vl-layout"] {
     min-width: auto;
