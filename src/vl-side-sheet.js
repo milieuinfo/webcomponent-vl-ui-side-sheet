@@ -41,13 +41,14 @@ export class VlSideSheet extends vlElement(HTMLElement) {
     return ['left', 'right', 'absolute'];
   }
 
-  constructor() {
+  constructor(style = '') {
     super(`
       <style> 
         @import '/src/style.css';
         @import '/node_modules/vl-ui-grid/dist/style.css';
         @import '/node_modules/vl-ui-button/dist/style.css';
         @import '/node_modules/vl-ui-icon/dist/style.css';
+        ${style}
       </style>  
       <div id="vl-side-sheet-backdrop"></div>
       <button is="vl-button" type="button" class="vl-side-sheet__toggle" data-vl-icon>
