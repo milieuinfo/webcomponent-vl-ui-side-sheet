@@ -24,39 +24,31 @@
       test('kan programmatisch geopend worden', () => {
         const sidesheet = fixture('vl-side-sheet-fixture');
         sidesheet.open();
-        assert.isTrue(sidesheet._sheetElement.hasAttribute('open'));
-        assert.isTrue(sidesheet._backdropElement.hasAttribute('open'));
         assert.isTrue(sidesheet.isOpen);
       });
 
       test('kan programmatisch gesloten worden', () => {
         const sidesheet = fixture('vl-side-sheet-fixture');
+        sidesheet.open();
+        assert.isTrue(sidesheet.isOpen);
         sidesheet.close();
-        assert.isFalse(sidesheet._sheetElement.hasAttribute('open'));
-        assert.isFalse(sidesheet._backdropElement.hasAttribute('open'));
+        assert.isFalse(sidesheet.isOpen);
       });
 
       test('kan via de toggle functie programmatisch geopend of gesloten worden afhankelijk van de huidige status', () => {
         const sidesheet = fixture('vl-side-sheet-fixture');
-        sidesheet.open();
-        assert.isTrue(sidesheet._sheetElement.hasAttribute('open'));
-        assert.isTrue(sidesheet._backdropElement.hasAttribute('open'));
         sidesheet.toggle();
-        assert.isFalse(sidesheet._sheetElement.hasAttribute('open'));
-        assert.isFalse(sidesheet._backdropElement.hasAttribute('open'));
+        assert.isTrue(sidesheet.isOpen);
         sidesheet.toggle();
-        assert.isTrue(sidesheet._sheetElement.hasAttribute('open'));
-        assert.isTrue(sidesheet._backdropElement.hasAttribute('open'));
+        assert.isFalse(sidesheet.isOpen);
       });
 
-      test('kan gesloten worden via de close button', () => {
+      test('kan geopend en gesloten worden via de toggle button', () => {
         const sidesheet = fixture('vl-side-sheet-fixture');
-        sidesheet.open();
-        assert.isTrue(sidesheet._sheetElement.hasAttribute('open'));
-        assert.isTrue(sidesheet._backdropElement.hasAttribute('open'));
-        sidesheet.shadowRoot.querySelector('.vl-side-sheet__close').click();
-        assert.isFalse(sidesheet._sheetElement.hasAttribute('open'));
-        assert.isFalse(sidesheet._backdropElement.hasAttribute('open'));
+        sidesheet._toggleButton.click();
+        assert.isTrue(sidesheet.isOpen);
+        sidesheet._toggleButton.click();
+        assert.isFalse(sidesheet.isOpen);
       });
 
       test('class attributen worden omgezet in classes', () => {
@@ -73,11 +65,9 @@
         const callback = sinon.spy();
         sidesheet.onClose(callback);
         sidesheet.open();
-        assert.isTrue(sidesheet._sheetElement.hasAttribute('open'));
-        assert.isTrue(sidesheet._backdropElement.hasAttribute('open'));
-        sidesheet.shadowRoot.querySelector('.vl-side-sheet__close').click();
-        assert.isFalse(sidesheet._sheetElement.hasAttribute('open'));
-        assert.isFalse(sidesheet._backdropElement.hasAttribute('open'));
+        assert.isTrue(sidesheet.isOpen);
+        sidesheet._toggleButton.click();
+        assert.isFalse(sidesheet.isOpen);
         assert.isTrue(callback.calledOnce);
       });
 
@@ -86,6 +76,24 @@
         should.exist(sidesheet._regionElement);
         sidesheet.setAttribute('data-vl-absolute', '');
         should.not.exist(sidesheet._regionElement);
+      });
+
+      test('het toggle button icoon is afhankelijk van de positie en het al dan niet geopend zijn', () => {
+        const sidesheet = fixture('vl-side-sheet-fixture');
+        const icon = sidesheet._toggleButtonIcon;
+        assert.equal(icon.getAttribute('data-vl-icon'), 'nav-left');
+        sidesheet.open();
+        assert.equal(icon.getAttribute('data-vl-icon'), 'nav-right');
+        sidesheet.close();
+        sidesheet.setAttribute('data-vl-left', '');
+        assert.equal(icon.getAttribute('data-vl-icon'), 'nav-right');
+        sidesheet.open();
+        assert.equal(icon.getAttribute('data-vl-icon'), 'nav-left');
+        sidesheet.close();
+        sidesheet.removeAttribute('data-vl-left');
+        assert.equal(icon.getAttribute('data-vl-icon'), 'nav-left');
+        sidesheet.open();
+        assert.equal(icon.getAttribute('data-vl-icon'), 'nav-right');
       });
     });
   </script>

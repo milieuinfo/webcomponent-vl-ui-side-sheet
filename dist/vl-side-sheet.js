@@ -1,5 +1,7 @@
 import {vlElement, define} from '/node_modules/vl-ui-core/dist/vl-core.js';
 import '/node_modules/vl-ui-grid/dist/vl-grid.js';
+import '/node_modules/vl-ui-button/dist/vl-button.js';
+import '/node_modules/vl-ui-icon/dist/vl-icon.js';
 import swipeDetect from '/node_modules/swipe-detect/dist/index.js';
 
 /**
@@ -44,28 +46,30 @@ export class VlSideSheet extends vlElement(HTMLElement) {
       <style> 
         @import '/node_modules/vl-ui-side-sheet/dist/style.css';
         @import '/node_modules/vl-ui-grid/dist/style.css';
+        @import '/node_modules/vl-ui-button/dist/style.css';
+        @import '/node_modules/vl-ui-icon/dist/style.css';
       </style>  
       <div id="vl-side-sheet-backdrop"></div>
+      <button is="vl-button" type="button" class="vl-side-sheet__toggle" data-vl-icon>
+        <span is="vl-icon" data-vl-icon="nav-left"></span>
+        <span class="vl-u-visually-hidden">Venster sluiten</span>
+      </button>
       <div id="vl-side-sheet">
         <section is="vl-region">
           <div is="vl-layout">
             <slot></slot>
           </div>
         </section>
-        <button type="button" class="vl-side-sheet__close">
-          <i class="vl-side-sheet__close__icon vl-vi vl-vi-cross" aria-hidden="true"></i>
-          <span class="vl-u-visually-hidden">Venster sluiten</span>
-        </button>
       </div>
     `);
   }
 
   connectedCallback() {
-    this._closeButton.addEventListener('click', () => this.close());
+    this._toggleButton.addEventListener('click', () => this.toggle());
   }
 
   get isOpen() {
-    return this._element.hasAttribute('open');
+    return this.hasAttribute('open');
   }
 
   get isLeft() {
@@ -76,8 +80,12 @@ export class VlSideSheet extends vlElement(HTMLElement) {
     return 'vl-side-sheet--';
   }
 
-  get _closeButton() {
-    return this._shadow.querySelector('.vl-side-sheet__close');
+  get _toggleButton() {
+    return this._shadow.querySelector('.vl-side-sheet__toggle');
+  }
+
+  get _toggleButtonIcon() {
+    return this._toggleButton.querySelector('[is="vl-icon"]');
   }
 
   get _sheetElement() {
@@ -111,8 +119,8 @@ export class VlSideSheet extends vlElement(HTMLElement) {
    * @Return {void}
    */
   open() {
-    this._sheetElement.setAttribute('open', '');
-    this._backdropElement.setAttribute('open', '');
+    this.setAttribute('data-vl-open', '');
+    this._toggleButtonIcon.setAttribute('data-vl-icon', this.isLeft ? 'nav-left' : 'nav-right');
   }
 
   /**
@@ -121,8 +129,8 @@ export class VlSideSheet extends vlElement(HTMLElement) {
    * @Return {void}
    */
   close() {
-    this._sheetElement.removeAttribute('open');
-    this._backdropElement.removeAttribute('open');
+    this.removeAttribute('data-vl-open');
+    this._toggleButtonIcon.setAttribute('data-vl-icon', this.isLeft ? 'nav-right' : 'nav-left');
     if (this._onClose) {
       this._onClose();
     }
@@ -150,9 +158,17 @@ export class VlSideSheet extends vlElement(HTMLElement) {
   }
 
   _absoluteChangedCallback(oldValue, newValue) {
-    if (newValue != undefined) {
+    if (newValue != undefined && this._regionElement) {
       this._sheetElement.append(this._slotElement);
       this._regionElement.remove();
+    }
+  }
+
+  _leftChangedCallback(oldValue, newValue) {
+    if (newValue != undefined) {
+      this._toggleButtonIcon.setAttribute('data-vl-icon', 'nav-right');
+    } else {
+      this._toggleButtonIcon.setAttribute('data-vl-icon', 'nav-left');
     }
   }
 }

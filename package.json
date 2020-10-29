@@ -38,18 +38,20 @@
   },
   "dependencies": {
     "swipe-detect": "^1.0.1",
+    "vl-ui-button": "^5.0.6",
     "vl-ui-core": "^6.0.0",
-    "vl-ui-grid": "^3.1.4"
+    "vl-ui-grid": "^3.1.4",
+    "vl-ui-icon": "^5.2.0"
   },
   "peerDependencies": {
     "swipe-detect": "^1.0.1",
-    "vl-ui-core": "^6.0.0"
+    "vl-ui-core": "^6.0.0",
+    "vl-ui-button": "^5.0.6",
+    "vl-ui-grid": "^3.1.4"
   },
   "devDependencies": {
     "@govflanders/vl-ui-core": "^4.0.5",
-    "@govflanders/vl-ui-modal": "^3.11.5",
     "vl-ui-body": "^1.0.4",
-    "vl-ui-button": "^5.0.6",
     "vl-ui-datepicker": "^3.0.7",
     "vl-ui-template": "^3.1.0",
     "vl-ui-titles": "^3.0.6",
