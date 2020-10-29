@@ -96,8 +96,6 @@ $break-small: 767px;
   position: absolute;
   top: 0px;
   left: 0px;
-  width: 100%;
-  height: 100%;
   
   #vl-side-sheet {
     padding-top: 0px;
@@ -115,6 +113,9 @@ $break-small: 767px;
 }
 
 :host(.vl-side-sheet--absolute[data-vl-open]) {
+  width: 100%;
+  height: 100%;
+
   .vl-side-sheet__toggle {
     border-right-width: 0px !important;
   }
@@ -122,6 +123,7 @@ $break-small: 767px;
 
 :host(.vl-side-sheet--absolute.vl-side-sheet--left[data-vl-open]) {
   .vl-side-sheet__toggle {
+    border-right-width: 1px !important;
     border-left-width: 0px !important;
   }
 }

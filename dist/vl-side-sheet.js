@@ -65,7 +65,12 @@ export class VlSideSheet extends vlElement(HTMLElement) {
   }
 
   connectedCallback() {
-    this._toggleButton.addEventListener('click', () => this.toggle());
+    this._toggle = () => this.toggle();
+    this._toggleButton.addEventListener('click', this._toggle);
+  }
+
+  disconnectedCallback() {
+    this._toggleButton.removeEventListener('click', this._toggle);
   }
 
   get isOpen() {
