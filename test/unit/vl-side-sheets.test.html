@@ -11,20 +11,19 @@
 </head>
 
 <body>
+  <test-fixture id="vl-side-sheet-fixture">
+    <template>
+      <vl-side-sheet></vl-side-sheet>
+    </template>
+  </test-fixture>
 
-<test-fixture id="vl-side-sheet-fixture">
-  <template>
-    <vl-side-sheet></vl-side-sheet>
-  </template>
-</test-fixture>
+  <script>
+    suite('vl-side-sheet', () => {
+      let sidesheet;
 
-<script>
-  suite('<vl-side-sheet>', () => {
-    let sidesheet;
-
-    setup(() => {
-      sidesheet = fixture('vl-side-sheet-fixture');
-    });
+      setup(() => {
+        sidesheet = fixture('vl-side-sheet-fixture');
+      });
 
     test('de open functie zal de side sheet openen en het open attribuut zetten', () => {
       sidesheet.open();
@@ -68,8 +67,7 @@
       assert.isFalse(sidesheet.hasAttribute('data-vl-open'));
       assert.isTrue(callback.calledOnce);
     });
-  });
-</script>
+  </script>
 </body>
 
 </html>

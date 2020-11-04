@@ -1,5 +1,5 @@
 // ==========================================================================
-// Vlaanderen UI -- Side-sheet
+// Vlaanderen UI -- SideSheet
 // ==========================================================================
 @charset "utf-8";
 
@@ -7,6 +7,11 @@
 // Core
 // ==========================================================================
 @import "vl-ui-core/src/scss/core";
+
+// ==========================================================================
+// Depencencies
+// ==========================================================================
+@import "vl-ui-modal/src/scss/modal";
 
 $break-small: 767px;
 
@@ -20,6 +25,7 @@ $break-small: 767px;
   width: var(--vl-side-sheet-width, calc(100%/3));
   right: 0;
   border-left: 1px solid #cbd2da;
+  padding-top: 43px;
 
   @media screen and (max-width: $break-small) {
     width: calc(100vw - 56px);
@@ -30,8 +36,11 @@ $break-small: 767px;
   height: 100vh;
   z-index: 1001;
   background: white;
-  padding: 2rem;
-  overflow: scroll;
+  overflow: auto;
+
+  [is="vl-layout"] {
+    min-width: auto;
+  }
 }
 
 :host([open]) {
@@ -120,4 +129,3 @@ $break-small: 767px;
   border: 0;
   left: 0;
   top: 0;
-}

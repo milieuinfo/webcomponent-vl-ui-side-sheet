@@ -1,4 +1,5 @@
 import {vlElement, define} from '/node_modules/vl-ui-core/dist/vl-core.js';
+import '/node_modules/vl-ui-grid/dist/vl-grid.js';
 import swipeDetect from '/node_modules/swipe-detect/dist/index.js';
 
 /**
@@ -7,10 +8,11 @@ import swipeDetect from '/node_modules/swipe-detect/dist/index.js';
  * @classdesc SideSheet zijn containers die aan de linker- of rechterrand van het scherm zijn verankerd.
  *
  * @extends HTMLElement
+ * @mixes vlElement
  *
- * @property {boolean} left - Attribute wordt gebruikt om aan te duiden dat de side-sheet de linkererand van het scherm moet plaatsen.
- * @property {boolean} right - Attribute wordt gebruikt om aan te duiden dat de side-sheet de rechterkant van het scherm moet plaatsen.
- * @property {boolean} enable-swipe - Attribute wordt gebruikt om aan te duiden dat swipe functie toegelaten is.
+ * @property {boolean} data-vl-left - Attribute wordt gebruikt om aan te duiden dat de side-sheet de linkererand van het scherm moet plaatsen.
+ * @property {boolean} data-vl-right - Attribute wordt gebruikt om aan te duiden dat de side-sheet de rechterkant van het scherm moet plaatsen.
+ * @property {boolean} data-vl-enable-swipe - Attribute wordt gebruikt om aan te duiden dat swipe functie toegelaten is.
  *
  * @example Breedte van de side sheet aanpassen(op grote scherm):
  *  static get styles() {
@@ -19,7 +21,7 @@ import swipeDetect from '/node_modules/swipe-detect/dist/index.js';
         :host {
          --vl-side-sheet-width: 480px;
          }
-        `
+      `
     ];
   }
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-side-sheet/releases/latest|Release notes}
@@ -39,11 +41,15 @@ export class VlSideSheet extends vlElement(HTMLElement) {
       </style>  
       <div id="vl-side-sheet-backdrop"></div>
       <div id="vl-side-sheet">
+        <section is="vl-region">
+          <div is="vl-layout">
+            <slot></slot>
+          </div>
+        </section>
         <button type="button" class="vl-side-sheet__close">
           <i class="vl-side-sheet__close__icon vl-vi vl-vi-cross" aria-hidden="true"></i>
           <span class="vl-u-visually-hidden">Venster sluiten</span>
         </button>
-        <slot></slot>
       </div>
     `);
   }

@@ -39,8 +39,8 @@ describe('vl-side-sheet', async () => {
     const sheet = await vlSideSheetPage.getSidesheet();
     await vlSideSheetPage.toggleSidesheet();
     const slotNodes = await sheet.getContentSlotNodes();
-    await assert.eventually.equal(slotNodes[0].getAttribute('is'), 'vl-h1');
-    await assert.eventually.equal(slotNodes[0].getText(), 'Hello world!');
+    await assert.eventually.equal(slotNodes[0].getAttribute('is'), 'vl-h2');
+    await assert.eventually.equal(slotNodes[0].getText(), 'Lorem ipsum');
   });
 
   it('als gebruiker zie ik een onderscheid tussen een links en rechts gealigneerde sidesheet', async () => {
