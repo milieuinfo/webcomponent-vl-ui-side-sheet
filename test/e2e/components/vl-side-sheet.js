@@ -2,25 +2,34 @@ const {VlElement} = require('vl-ui-core').Test;
 const {By} = require('vl-ui-core').Test.Setup;
 
 class VlSideSheet extends VlElement {
-  async _getCloseButton() {
-    return this.shadowRoot.findElement(By.css('button.vl-side-sheet__close'));
-  }
-
   async isOpen() {
-    return this.shadowRoot.hasAttribute('open');
+    return this.hasAttribute('data-vl-open');
   }
 
   async isLeft() {
-    return this.hasAttribute('left');
+    return this.hasAttribute('data-vl-left');
   }
 
   async isSwipeEnabled() {
-    return this.hasAttribute('enable-swipe');
+    return this.hasAttribute('data-vl-enable-swipe');
+  }
+
+  async open() {
+    const isOpen = await this.isOpen();
+    if (!isOpen) {
+      const toggleButton = await this._getToggleButton();
+      return toggleButton.click();
+    }
   }
 
   async close() {
-    const closeButton = await this._getCloseButton();
-    return closeButton.click();
+    const isOpen = await this.isOpen();
+    if (isOpen) {
+      const html = await this.shadowRoot.getInnerHTML();
+      console.log(html);
+      const toggleButton = await this._getToggleButton();
+      return toggleButton.click();
+    }
   }
 
   async getContentSlotNodes() {
@@ -30,6 +39,10 @@ class VlSideSheet extends VlElement {
 
   async _getContentSlot() {
     return this.shadowRoot.findElement(By.css('#vl-side-sheet slot'));
+  }
+
+  async _getToggleButton() {
+    return this.shadowRoot.findElement(By.css('.vl-side-sheet__toggle'));
   }
 }
 
