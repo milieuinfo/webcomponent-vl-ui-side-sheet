@@ -81,7 +81,7 @@ export class VlSideSheet extends vlElement(HTMLElement) {
   }
 
   get isLeft() {
-    return !!this.getAttribute('left');
+    return this.hasAttribute('left');
   }
 
   get _classPrefix() {
