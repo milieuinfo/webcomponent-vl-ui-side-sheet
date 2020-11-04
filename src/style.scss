@@ -40,6 +40,7 @@ $break-small: 767px;
   border: 1px solid $vl-border-color !important;
   border-right-width: 0px !important;
   color: $vl-text-color !important;
+  cursor: pointer;
 }
 
 :host(.vl-side-sheet--left) {
