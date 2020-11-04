@@ -60,7 +60,7 @@
         });
       });
 
-      test('onclose callback wordt uitgevoerd', () => {
+      test('de close callback wordt uitgevoerd bij het sluiten van de side sheet', () => {
         const sidesheet = fixture('vl-side-sheet-fixture');
         const callback = sinon.spy();
         sidesheet.onClose(callback);
