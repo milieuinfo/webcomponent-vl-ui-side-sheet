@@ -10,43 +10,48 @@
 
 $break-small: 767px;
 
-#vl-side-sheet {
-  display: none;
+:host {
   position: fixed;
-  width: 100%;
-  top: 0;
-  right: 0;
-  padding-top: 43px;
-  height: 100vh;
-  z-index: 1001;
-  background: white;
-  overflow: auto;
-  box-shadow: 0 0 6px rgba(0,0,0,0.15);
-
-  [is="vl-layout"] {
-    min-width: auto;
-  }
-}
-
-#vl-side-sheet-backdrop {
-  display: none;
-}
-
-.vl-side-sheet__toggle {
-  position: fixed;
-  top: 43px;
+  top: 0px;
   right: 0px;
-  background-color: white !important;
-  border: 1px solid $vl-border-color !important;
-  border-right-width: 0px !important;
-  color: $vl-text-color !important;
-  cursor: pointer;
+  z-index: 1001;
+
+  #vl-side-sheet {
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 100%;
+    padding-top: 43px;
+    z-index: 2;
+    background: white;
+    overflow: auto;
+    box-shadow: 0 0 6px rgba(0,0,0,0.15);
+  
+    [is="vl-layout"] {
+      min-width: auto;
+    }
+  }
+  
+  #vl-side-sheet-backdrop {
+    display: none;
+  }
+  
+  .vl-side-sheet__toggle {
+    position: absolute;
+    top: 43px;
+    right: 0px;
+    background-color: white !important;
+    border: 1px solid $vl-border-color !important;
+    border-right-width: 0px !important;
+    color: $vl-text-color !important;
+    cursor: pointer !important;
+    z-index: 1;
+  }
 }
 
 :host(.vl-side-sheet--left) {
-  #vl-side-sheet { 
-    left: 0;
-  }
+  right: initial;
+  left: 0;
 
   .vl-side-sheet__toggle {
     right: initial;
@@ -59,6 +64,7 @@ $break-small: 767px;
 :host([data-vl-open]) {
   width: var(--vl-side-sheet-width, calc(100%/3));
   height: 100%;
+  z-index: 1002;
 
   @media screen and (max-width: $break-small) {
     width: calc(100vw - 56px);
@@ -78,7 +84,6 @@ $break-small: 767px;
     right: 0;
     top: 0;
     bottom: 0;
-    z-index: 1000;
     background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(2px);
   }
@@ -96,18 +101,13 @@ $break-small: 767px;
 
 :host(.vl-side-sheet--absolute) {
   position: absolute;
-  top: 0px;
-  right: 0px;
   
   #vl-side-sheet {
     padding-top: 0px;
-    position: absolute;
-    height: 100%;
     padding: 15px;
   }
 
   .vl-side-sheet__toggle {
-    position: absolute;
     top: 0px;
     border-left-width: 1px !important;
     border-right-width: 1px !important;
