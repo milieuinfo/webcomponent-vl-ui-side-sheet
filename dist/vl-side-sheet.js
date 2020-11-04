@@ -50,17 +50,19 @@ export class VlSideSheet extends vlElement(HTMLElement) {
         @import '/node_modules/vl-ui-icon/dist/style.css';
         ${style}
       </style>  
-      <div id="vl-side-sheet-backdrop"></div>
-      <button is="vl-button" type="button" class="vl-side-sheet__toggle" data-vl-icon>
-        <span is="vl-icon" data-vl-icon="nav-left"></span>
-        <span class="vl-u-visually-hidden">Venster sluiten</span>
-      </button>
-      <div id="vl-side-sheet">
-        <section is="vl-region">
-          <div is="vl-layout">
-            <slot></slot>
-          </div>
-        </section>
+      <div>
+        <button is="vl-button" type="button" class="vl-side-sheet__toggle" data-vl-icon>
+          <span is="vl-icon" data-vl-icon="nav-left"></span>
+          <span class="vl-u-visually-hidden">Venster sluiten</span>
+        </button>
+        <div id="vl-side-sheet-backdrop"></div>
+        <div id="vl-side-sheet">
+          <section is="vl-region">
+            <div is="vl-layout">
+              <slot></slot>
+            </div>
+          </section>
+        </div>
       </div>
     `);
   }
@@ -79,7 +81,7 @@ export class VlSideSheet extends vlElement(HTMLElement) {
   }
 
   get isLeft() {
-    return this.hasAttribute('left');
+    return !!this.getAttribute('left');
   }
 
   get _classPrefix() {
