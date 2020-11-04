@@ -1,5 +1,7 @@
 import {vlElement, define} from '/node_modules/vl-ui-core/dist/vl-core.js';
 import '/node_modules/vl-ui-grid/dist/vl-grid.js';
+import '/node_modules/vl-ui-button/dist/vl-button.js';
+import '/node_modules/vl-ui-icon/dist/vl-icon.js';
 import swipeDetect from '/node_modules/swipe-detect/dist/index.js';
 
 /**
@@ -10,9 +12,10 @@ import swipeDetect from '/node_modules/swipe-detect/dist/index.js';
  * @extends HTMLElement
  * @mixes vlElement
  *
- * @property {boolean} data-vl-left - Attribute wordt gebruikt om aan te duiden dat de side-sheet de linkererand van het scherm moet plaatsen.
- * @property {boolean} data-vl-right - Attribute wordt gebruikt om aan te duiden dat de side-sheet de rechterkant van het scherm moet plaatsen.
  * @property {boolean} data-vl-enable-swipe - Attribute wordt gebruikt om aan te duiden dat swipe functie toegelaten is.
+ * @property {boolean} data-vl-left - Attribute wordt gebruikt om aan te duiden dat de side-sheet de linkererand van het scherm moet plaatsen.
+ * @property {boolean} data-vl-absolute - Attribute wordt gebruikt om aan te duiden dat de side-sheet absoluut gepositioneerd wordt.
+ * @property {boolean} data-vl-right - Attribute wordt gebruikt om aan te duiden dat de side-sheet de rechterkant van het scherm moet plaatsen.
  *
  * @example Breedte van de side sheet aanpassen(op grote scherm):
  *  static get styles() {
@@ -31,52 +34,80 @@ import swipeDetect from '/node_modules/swipe-detect/dist/index.js';
  */
 export class VlSideSheet extends vlElement(HTMLElement) {
   static get _observedAttributes() {
-    return ['left', 'right', 'enable-swipe'];
+    return ['enable-swipe'];
   }
 
-  constructor() {
+  static get _observedClassAttributes() {
+    return ['left', 'right', 'absolute'];
+  }
+
+  constructor(style = '') {
     super(`
       <style> 
         @import '/node_modules/vl-ui-side-sheet/dist/style.css';
         @import '/node_modules/vl-ui-grid/dist/style.css';
+        @import '/node_modules/vl-ui-button/dist/style.css';
+        @import '/node_modules/vl-ui-icon/dist/style.css';
+        ${style}
       </style>  
       <div id="vl-side-sheet-backdrop"></div>
+      <button is="vl-button" type="button" class="vl-side-sheet__toggle" data-vl-icon>
+        <span is="vl-icon" data-vl-icon="nav-left"></span>
+        <span class="vl-u-visually-hidden">Venster sluiten</span>
+      </button>
       <div id="vl-side-sheet">
         <section is="vl-region">
           <div is="vl-layout">
             <slot></slot>
           </div>
         </section>
-        <button type="button" class="vl-side-sheet__close">
-          <i class="vl-side-sheet__close__icon vl-vi vl-vi-cross" aria-hidden="true"></i>
-          <span class="vl-u-visually-hidden">Venster sluiten</span>
-        </button>
       </div>
     `);
   }
 
   connectedCallback() {
-    this._closeButton.addEventListener('click', () => this.close());
+    this._toggle = () => this.toggle();
+    this._toggleButton.addEventListener('click', this._toggle);
+  }
+
+  disconnectedCallback() {
+    this._toggleButton.removeEventListener('click', this._toggle);
   }
 
   get isOpen() {
-    return this._element.hasAttribute('open');
+    return this.hasAttribute('open');
   }
 
   get isLeft() {
     return this.hasAttribute('left');
   }
 
-  get _closeButton() {
-    return this._shadow.querySelector('.vl-side-sheet__close');
+  get _classPrefix() {
+    return 'vl-side-sheet--';
+  }
+
+  get _toggleButton() {
+    return this._shadow.querySelector('.vl-side-sheet__toggle');
+  }
+
+  get _toggleButtonIcon() {
+    return this._toggleButton.querySelector('[is="vl-icon"]');
   }
 
   get _sheetElement() {
     return this._shadow.querySelector('#vl-side-sheet');
   }
 
+  get _regionElement() {
+    return this._sheetElement.querySelector('[is="vl-region"]');
+  }
+
   get _backdropElement() {
     return this._shadow.querySelector('#vl-side-sheet-backdrop');
+  }
+
+  get _slotElement() {
+    return this._shadow.querySelector('slot');
   }
 
   /**
@@ -94,8 +125,8 @@ export class VlSideSheet extends vlElement(HTMLElement) {
    * @Return {void}
    */
   open() {
-    this._sheetElement.setAttribute('open', '');
-    this._backdropElement.setAttribute('open', '');
+    this.setAttribute('data-vl-open', '');
+    this._toggleButtonIcon.setAttribute('data-vl-icon', this.isLeft ? 'nav-left' : 'nav-right');
   }
 
   /**
@@ -104,8 +135,8 @@ export class VlSideSheet extends vlElement(HTMLElement) {
    * @Return {void}
    */
   close() {
-    this._sheetElement.removeAttribute('open');
-    this._backdropElement.removeAttribute('open');
+    this.removeAttribute('data-vl-open');
+    this._toggleButtonIcon.setAttribute('data-vl-icon', this.isLeft ? 'nav-right' : 'nav-left');
     if (this._onClose) {
       this._onClose();
     }
@@ -120,14 +151,6 @@ export class VlSideSheet extends vlElement(HTMLElement) {
     this._onClose = callback;
   }
 
-  _leftChangedCallback(oldValue, newValue) {
-    if (newValue !== undefined) {
-      this._sheetElement.classList.add('vl-side-sheet--left');
-    } else {
-      this._sheetElement.classList.remove('vl-side-sheet--left');
-    }
-  }
-
   _enableSwipeChangedCallback(oldValue, newValue) {
     if (newValue !== undefined) {
       swipeDetect(this._sheetElement, (direction) => {
@@ -137,6 +160,21 @@ export class VlSideSheet extends vlElement(HTMLElement) {
       }, 50);
     } else {
       swipeDetect.disable();
+    }
+  }
+
+  _absoluteChangedCallback(oldValue, newValue) {
+    if (newValue != undefined && this._regionElement) {
+      this._sheetElement.append(this._slotElement);
+      this._regionElement.remove();
+    }
+  }
+
+  _leftChangedCallback(oldValue, newValue) {
+    if (newValue != undefined) {
+      this._toggleButtonIcon.setAttribute('data-vl-icon', 'nav-right');
+    } else {
+      this._toggleButtonIcon.setAttribute('data-vl-icon', 'nav-left');
     }
   }
 }
