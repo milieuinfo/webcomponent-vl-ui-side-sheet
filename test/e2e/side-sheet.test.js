@@ -1,11 +1,12 @@
-const {assert, driver} = require('vl-ui-core').Test.Setup;
+const {assert, getDriver} = require('vl-ui-core').Test.Setup;
 const VlSideSheetPage = require('./pages/vl-side-sheet.page');
 
 describe('vl-side-sheet', async () => {
-  const vlSideSheetPage = new VlSideSheetPage(driver);
+  let vlSideSheetPage;
 
-  beforeEach(async () => {
-    await vlSideSheetPage.load();
+  beforeEach(() => {
+    vlSideSheetPage = new VlSideSheetPage(getDriver());
+    return vlSideSheetPage.load();
   });
 
   it('als gebruiker kan ik de side-sheet programmatorisch openen en sluiten via toggle', async () => {
