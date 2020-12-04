@@ -39,13 +39,13 @@
   "dependencies": {
     "swipe-detect": "^1.0.1",
     "vl-ui-button": "^5.0.6",
-    "vl-ui-core": "^6.2.3",
+    "vl-ui-core": "^7.0.0",
     "vl-ui-grid": "^3.1.4",
     "vl-ui-icon": "^5.2.0"
   },
   "peerDependencies": {
     "swipe-detect": "^1.0.1",
-    "vl-ui-core": "^6.0.0",
+    "vl-ui-core": "^7.0.0",
     "vl-ui-button": "^5.0.6",
     "vl-ui-grid": "^3.1.4"
   },
