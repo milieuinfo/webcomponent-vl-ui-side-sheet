@@ -51,7 +51,7 @@ export class VlSideSheet extends vlElement(HTMLElement) {
         ${style}
       </style>  
       <div>
-        <button is="vl-button" type="button" class="vl-side-sheet__toggle" data-vl-icon>
+        <button is="vl-button" type="button" class="vl-side-sheet__toggle">
           <span is="vl-icon" data-vl-icon="nav-left"></span>
           <span class="vl-u-visually-hidden">Venster sluiten</span>
         </button>

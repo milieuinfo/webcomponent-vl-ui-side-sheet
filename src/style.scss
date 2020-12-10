@@ -13,6 +13,7 @@
   top: 0px;
   right: 0px;
   z-index: 1001;
+  width: var(--vl-side-sheet-width, calc(100%/3));
 
   #vl-side-sheet {
     position: absolute;
@@ -36,11 +37,13 @@
   
   .vl-side-sheet__toggle {
     position: absolute;
-    top: 43px;
+    top: calc(1rem + 43px);
     right: 0px;
     background-color: white !important;
     border: 1px solid $vl-border-color !important;
     border-right-width: 0px !important;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
     color: $vl-text-color !important;
     cursor: pointer !important;
     z-index: 1;
@@ -56,11 +59,14 @@
     left: 0px;
     border-right-width: 1px !important;
     border-left-width: 0px !important;
+    border-top-right-radius: $vl-form-border-radius;
+    border-bottom-right-radius: $vl-form-border-radius;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
   }
 }
 
 :host([data-vl-open]) {
-  width: var(--vl-side-sheet-width, calc(100%/3));
   height: 100%;
   z-index: 1002;
 
@@ -106,7 +112,7 @@
   }
 
   .vl-side-sheet__toggle {
-    top: 0px;
+    top: 1rem;
     border-left-width: 1px !important;
     border-right-width: 1px !important;
   }
@@ -120,6 +126,8 @@
 :host(.vl-side-sheet--absolute[data-vl-open]) {
   .vl-side-sheet__toggle {
     border-right-width: 0px !important;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
   }
 }
 
@@ -127,5 +135,9 @@
   .vl-side-sheet__toggle {
     border-right-width: 1px !important;
     border-left-width: 0px !important;
+    border-top-right-radius: $vl-form-border-radius;
+    border-bottom-right-radius: $vl-form-border-radius;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
   }
 }
