@@ -25,8 +25,6 @@ class VlSideSheet extends VlElement {
   async close() {
     const isOpen = await this.isOpen();
     if (isOpen) {
-      const html = await this.shadowRoot.getInnerHTML();
-      console.log(html);
       const toggleButton = await this._getToggleButton();
       return toggleButton.click();
     }
