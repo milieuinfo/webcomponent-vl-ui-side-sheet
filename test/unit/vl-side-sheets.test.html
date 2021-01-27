@@ -51,6 +51,13 @@
         assert.isFalse(sidesheet.isOpen);
       });
 
+      test('de toggle knop tekst zal aangepast worden bij het openen en sluiten', () => {
+        const sidesheet = fixture('vl-side-sheet-fixture');
+        assert.equal(sidesheet._toggleButtonTextElement.textContent, 'Zijpaneel openen');
+        sidesheet.toggle();
+        assert.equal(sidesheet._toggleButtonTextElement.textContent, 'Zijpaneel sluiten');
+      });
+
       test('class attributen worden omgezet in classes', () => {
         ['left', 'right', 'absolute'].forEach((attribute) => {
           const sidesheet = fixture('vl-side-sheet-fixture');
