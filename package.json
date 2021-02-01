@@ -39,7 +39,7 @@
   "dependencies": {
     "swipe-detect": "^1.0.1",
     "vl-ui-button": "^5.0.9",
-    "vl-ui-core": "^7.1.0",
+    "vl-ui-core": "^7.1.1",
     "vl-ui-grid": "^3.2.0",
     "vl-ui-icon": "^5.2.1"
   },
