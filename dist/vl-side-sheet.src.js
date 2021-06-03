@@ -1,4 +1,5 @@
 import {vlElement, define} from 'vl-ui-core';
+import 'vl-ui-core';
 import 'vl-ui-grid';
 import 'vl-ui-button';
 import 'vl-ui-icon';
@@ -57,7 +58,7 @@ export class VlSideSheet extends vlElement(HTMLElement) {
       <div>
         <button is="vl-button" type="button" class="vl-side-sheet__toggle">
           <span is="vl-icon" data-vl-icon="nav-left"></span>
-          <span class="vl-u-visually-hidden">Venster sluiten</span>
+          <span id="vl-side-sheet-toggle-text" is="vl-text" data-vl-visually-hidden>Zijpaneel openen</span>
         </button>
         <div id="vl-side-sheet-backdrop"></div>
         <div id="vl-side-sheet">
@@ -96,6 +97,10 @@ export class VlSideSheet extends vlElement(HTMLElement) {
     return this._shadow.querySelector('.vl-side-sheet__toggle');
   }
 
+  get _toggleButtonTextElement() {
+    return this._shadow.querySelector('#vl-side-sheet-toggle-text');
+  }
+
   get _toggleButtonIcon() {
     return this._toggleButton.querySelector('[is="vl-icon"]');
   }
@@ -132,6 +137,7 @@ export class VlSideSheet extends vlElement(HTMLElement) {
    */
   open() {
     this.setAttribute('data-vl-open', '');
+    this._toggleButtonTextElement.textContent = 'Zijpaneel sluiten';
     this._toggleButtonIcon.setAttribute('data-vl-icon', this.isLeft ? 'nav-left' : 'nav-right');
   }
 
@@ -142,6 +148,7 @@ export class VlSideSheet extends vlElement(HTMLElement) {
    */
   close() {
     this.removeAttribute('data-vl-open');
+    this._toggleButtonTextElement.textContent = 'Zijpaneel openen';
     this._toggleButtonIcon.setAttribute('data-vl-icon', this.isLeft ? 'nav-right' : 'nav-left');
     if (this._onClose) {
       this._onClose();
