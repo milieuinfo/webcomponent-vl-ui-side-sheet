@@ -39,8 +39,8 @@
   "dependencies": {
     "swipe-detect": "^1.0.1",
     "vl-ui-button": "^5.0.10",
-    "vl-ui-core": "^7.1.1",
-    "vl-ui-grid": "^3.2.1",
+    "vl-ui-core": "^7.2.4",
+    "vl-ui-grid": "^3.3.0",
     "vl-ui-icon": "^5.2.2"
   },
   "peerDependencies": {
@@ -51,12 +51,12 @@
     "vl-ui-icon": "^5.2.1"
   },
   "devDependencies": {
-    "@govflanders/vl-ui-core": "^4.1.3",
-    "vl-ui-body": "^1.0.7",
-    "vl-ui-datepicker": "^3.2.4",
-    "vl-ui-template": "^3.1.1",
-    "vl-ui-titles": "^3.1.0",
-    "vl-ui-upload": "^3.4.0",
-    "vl-ui-util": "^5.3.7"
+    "@govflanders/vl-ui-core": "^4.1.24",
+    "vl-ui-body": "^1.0.8",
+    "vl-ui-datepicker": "^3.2.8",
+    "vl-ui-template": "^3.2.0",
+    "vl-ui-titles": "^3.1.1",
+    "vl-ui-upload": "^3.6.1",
+    "vl-ui-util": "^5.3.13"
   }
 }
