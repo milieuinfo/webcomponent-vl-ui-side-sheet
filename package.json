@@ -38,10 +38,10 @@
   },
   "dependencies": {
     "swipe-detect": "^1.0.1",
-    "vl-ui-button": "^5.0.10",
+    "vl-ui-button": "^5.0.11",
     "vl-ui-core": "^7.1.1",
-    "vl-ui-grid": "^3.2.1",
-    "vl-ui-icon": "^5.2.2"
+    "vl-ui-grid": "^3.3.1",
+    "vl-ui-icon": "^5.2.3"
   },
   "peerDependencies": {
     "swipe-detect": "^1.0.1",
@@ -57,6 +57,6 @@
     "vl-ui-template": "^3.1.1",
     "vl-ui-titles": "^3.1.0",
     "vl-ui-upload": "^3.4.0",
-    "vl-ui-util": "^5.3.7"
+    "vl-ui-util": "^5.3.13"
   }
 }
