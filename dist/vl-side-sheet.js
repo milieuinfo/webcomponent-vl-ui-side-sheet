@@ -17,7 +17,8 @@ import swipeDetect from '/node_modules/swipe-detect/dist/index.js';
  * @property {boolean} data-vl-left - Attribute wordt gebruikt om aan te duiden dat de side-sheet de linkererand van het scherm moet plaatsen.
  * @property {boolean} data-vl-absolute - Attribute wordt gebruikt om aan te duiden dat de side-sheet absoluut gepositioneerd wordt.
  * @property {boolean} data-vl-right - Attribute wordt gebruikt om aan te duiden dat de side-sheet de rechterkant van het scherm moet plaatsen.
- *
+ * @property {boolean} data-vl-toggle-text - Attribute wordt gebruikt om de toggle knop tekst te wijzigen.
+*
  * @example Breedte van de side sheet aanpassen(op grote scherm):
  *  static get styles() {
     return [
@@ -35,7 +36,7 @@ import swipeDetect from '/node_modules/swipe-detect/dist/index.js';
  */
 export class VlSideSheet extends vlElement(HTMLElement) {
   static get _observedAttributes() {
-    return ['enable-swipe'];
+    return ['enable-swipe', 'toggle-text'];
   }
 
   static get _observedClassAttributes() {
@@ -54,7 +55,7 @@ export class VlSideSheet extends vlElement(HTMLElement) {
       <div>
         <button is="vl-button" type="button" class="vl-side-sheet__toggle">
           <span is="vl-icon" data-vl-icon="nav-left"></span>
-          <span id="vl-side-sheet-toggle-text" is="vl-text" data-vl-visually-hidden>Zijpaneel openen</span>
+          <span id="vl-side-sheet-toggle-text" is="vl-text" data-vl-visually-hidden>Zijpaneel</span>
         </button>
         <div id="vl-side-sheet-backdrop"></div>
         <div id="vl-side-sheet">
@@ -133,7 +134,7 @@ export class VlSideSheet extends vlElement(HTMLElement) {
    */
   open() {
     this.setAttribute('data-vl-open', '');
-    this._toggleButtonTextElement.textContent = 'Zijpaneel sluiten';
+    this._toggleButton.setAttribute('aria-expanded', 'true');
     this._toggleButtonIcon.setAttribute('data-vl-icon', this.isLeft ? 'nav-left' : 'nav-right');
   }
 
@@ -144,7 +145,7 @@ export class VlSideSheet extends vlElement(HTMLElement) {
    */
   close() {
     this.removeAttribute('data-vl-open');
-    this._toggleButtonTextElement.textContent = 'Zijpaneel openen';
+    this._toggleButton.setAttribute('aria-expanded', 'false');
     this._toggleButtonIcon.setAttribute('data-vl-icon', this.isLeft ? 'nav-right' : 'nav-left');
     if (this._onClose) {
       this._onClose();
@@ -185,6 +186,10 @@ export class VlSideSheet extends vlElement(HTMLElement) {
     } else {
       this._toggleButtonIcon.setAttribute('data-vl-icon', 'nav-left');
     }
+  }
+
+  _toggleTextChangedCallback(oldValue, newValue) {
+    this._toggleButtonTextElement.textContent = newValue;
   }
 }
 
