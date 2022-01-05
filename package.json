@@ -51,7 +51,7 @@
     "vl-ui-icon": "^5.2.1"
   },
   "devDependencies": {
-    "@govflanders/vl-ui-core": "^4.1.24",
+    "@govflanders/vl-ui-core": "^11.0.0",
     "vl-ui-body": "^1.0.8",
     "vl-ui-datepicker": "^3.2.8",
     "vl-ui-template": "^3.2.0",
